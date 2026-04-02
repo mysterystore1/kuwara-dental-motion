@@ -86,7 +86,7 @@ const faqPreview = [
   <section class="home-hero wave-divider">
     <div class="container-narrow home-hero__inner">
       <div class="home-hero__copy">
-        <p class="section-kicker">First visit welcome</p>
+        <p class="section-kicker">初診のご案内</p>
         <p class="home-hero__clinic">{SITE.name}</p>
         <h1 class="home-hero__title">歯医者が久しぶりの方も、<br />安心してご相談ください。</h1>
         <p class="home-hero__text">
@@ -115,8 +115,8 @@ const faqPreview = [
         <figure class="hero-photo hero-photo--card">
           <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=700&q=80&auto=format&fit=crop" alt="カウンセリングの様子" loading="eager" />
           <figcaption>
-            <span class="eyebrow">Consultation</span>
-            <strong>まずは今の状態を確認し、無理のない進め方をご提案します。</strong>
+            <span class="eyebrow">ご相談について</span>
+            <strong>まずはお口の状態を確認し、進め方をわかりやすくご説明します。</strong>
           </figcaption>
         </figure>
       </div>
@@ -126,11 +126,11 @@ const faqPreview = [
   <section class="section-padding blob-section">
     <div class="container-narrow reassurance">
       <div class="reassurance__lead">
-        <p class="section-kicker">Before your visit</p>
-        <h2 class="section-title">来院前に感じやすい不安を、先回りして整えます。</h2>
+        <p class="section-kicker">ご来院前に</p>
+        <h2 class="section-title">来院前の不安を、少しでも軽くできるように。</h2>
         <p class="section-lead">
-          歯科医院を探しているとき、多くの方が気にしているのは「何をされるか」よりも「どう扱われるか」です。
-          その不安を軽くしてから、必要な治療の話に進みます。
+          歯科医院を探すときは、治療の内容だけでなく、どんなふうに話を聞いてもらえるかも気になるものです。
+          まずは来院前の不安をやわらげることを大切にしています。
         </p>
       </div>
 
@@ -143,11 +143,11 @@ const faqPreview = [
         </div>
 
         <div class="reassurance__panel">
-          <p class="eyebrow">How we respond</p>
-          <h3>状態を責めず、まずは今の困りごとから整理します。</h3>
+          <p class="eyebrow">当院の考え方</p>
+          <h3>今のお困りごとをうかがい、できることから整理します。</h3>
           <p>
-            すぐに治療を進めるのではなく、痛みの有無、ご不安、ご希望を整理したうえで、必要な検査や応急対応をご案内します。
-            説明を受けてから考えたい方にも、無理のない形で進めます。
+            すぐに治療を始めるのではなく、痛みの有無やご不安、ご希望をうかがったうえで、
+            必要な検査や応急対応をご案内します。説明を聞いてから考えたい方にも、無理のない形で進めます。
           </p>
           <a href="/dental-anxiety/" class="btn-secondary">歯医者が怖い方へ</a>
         </div>
@@ -157,7 +157,7 @@ const faqPreview = [
 
   <section class="section-padding promise-section">
     <div class="container-narrow">
-      <p class="section-kicker">Promise</p>
+      <p class="section-kicker">3つの約束</p>
       <h2 class="section-title">診療の土台にしている3つの約束</h2>
       <div class="promise-rows">
         {reasonItems.map((item, index) => (
@@ -167,7 +167,7 @@ const faqPreview = [
             </div>
             <div class="promise-row__copy">
               <span class="promise-row__number">{item.number}</span>
-              <p class="section-kicker">Our standard</p>
+              <p class="section-kicker">約束 {item.number}</p>
               <h3>{item.title}</h3>
               <p>{item.text}</p>
             </div>
@@ -194,8 +194,8 @@ const faqPreview = [
   <section class="section-padding first-step">
     <div class="container-narrow first-step__inner">
       <div class="first-step__copy">
-        <p class="section-kicker">First visit</p>
-        <h2 class="section-title">初診は、相談から治療までを急がず進めます。</h2>
+        <p class="section-kicker">初診の流れ</p>
+        <h2 class="section-title">初診では、今のお困りごとを整理することから始めます。</h2>
         <p class="section-lead">
           初回は問診、必要な検査、カウンセリング、ご説明が中心です。強い痛みがある場合は、応急的な処置を優先します。
         </p>
@@ -231,7 +231,7 @@ const faqPreview = [
   <section class="section-padding symptoms-overview blob-section">
     <div class="container-narrow">
       <div class="section-header">
-        <p class="section-kicker">Symptoms</p>
+        <p class="section-kicker">症状から探す</p>
         <h2 class="section-title">気になる症状から、必要なページへ進めます。</h2>
         <p class="section-lead">
           今つらい症状がある方は、原因や受診の目安をまとめた症状ページからご覧ください。
@@ -255,8 +255,8 @@ const faqPreview = [
   <section class="section-padding services-overview">
     <div class="container-narrow">
       <div class="section-header">
-        <p class="section-kicker">Medical</p>
-        <h2 class="section-title">診療内容を、目的ごとに整理しています。</h2>
+        <p class="section-kicker">診療内容</p>
+        <h2 class="section-title">お悩みに合わせた診療内容をご案内します。</h2>
         <p class="section-lead">
           どの診療が自分に合っているかわからない場合も、症状と合わせてご確認いただけます。
         </p>
@@ -281,7 +281,7 @@ const faqPreview = [
   <section class="section-padding doctor-highlight">
     <div class="container-narrow doctor-highlight__inner">
       <div class="doctor-highlight__copy">
-        <p class="section-kicker">Doctor message</p>
+        <p class="section-kicker">院長より</p>
         <h2 class="section-title">患者さまのペースを大切にしながら、必要な治療をご提案します。</h2>
         <p class="section-lead">
           「どこまで治療するか」「まず何を優先するか」は、生活背景やご希望によって変わります。説明を丁寧に行い、無理なく通える進め方を一緒に考えていきます。
@@ -306,7 +306,7 @@ const faqPreview = [
   <section class="section-padding clinic-preview blob-section">
     <div class="container-narrow">
       <div class="section-header">
-        <p class="section-kicker">Clinic</p>
+        <p class="section-kicker">院内紹介</p>
         <h2 class="section-title">受付から診療室まで、落ち着いて過ごせる空間づくりを心がけています。</h2>
       </div>
 
@@ -331,7 +331,7 @@ const faqPreview = [
   <section class="section-padding faq-preview">
     <div class="container-narrow faq-preview__inner">
       <div class="section-header">
-        <p class="section-kicker">FAQ</p>
+        <p class="section-kicker">よくあるご質問</p>
         <h2 class="section-title">初診前によくいただくご質問</h2>
       </div>
 
@@ -353,7 +353,7 @@ const faqPreview = [
   <section class="section-padding access-preview">
     <div class="container-narrow access-preview__inner">
       <div class="access-preview__copy">
-        <p class="section-kicker">Access</p>
+        <p class="section-kicker">アクセス</p>
         <h2 class="section-title">駅からの距離、診療時間、連絡先をまとめてご確認いただけます。</h2>
         <dl class="access-preview__list">
           <dt><DentalIcon name="pin" size={18} /> 住所</dt>
@@ -370,7 +370,7 @@ const faqPreview = [
       </div>
 
       <div class="access-preview__map soft-panel">
-        <p class="eyebrow">Location</p>
+        <p class="eyebrow">所在地</p>
         <strong>{SITE.address.station}</strong>
         <p>地図埋め込みは本番時に差し替え予定です。駅からの道順、駐車場情報、診療時間をアクセスページにまとめています。</p>
         <div class="access-preview__placeholder">
