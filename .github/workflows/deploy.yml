@@ -25,6 +25,14 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npx astro build
+      - name: Rewrite internal links for base path
+        run: |
+          BASE="/kuwara-dental"
+          find dist -name "*.html" -exec sed -i "s|href=\"/|href=\"${BASE}/|g" {} \;
+          find dist -name "*.html" -exec sed -i "s|href=\"${BASE}${BASE}/|href=\"${BASE}/|g" {} \;
+          find dist -name "*.html" -exec sed -i "s|href=\"${BASE}/http|href=\"http|g" {} \;
+          find dist -name "*.html" -exec sed -i "s|href=\"${BASE}/tel:|href=\"tel:|g" {} \;
+          find dist -name "*.html" -exec sed -i "s|href=\"${BASE}/#|href=\"#|g" {} \;
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
