@@ -27,7 +27,7 @@ jobs:
       - run: npx astro build
       - name: Rewrite internal links for base path
         run: |
-          BASE="/kuwara-dental"
+          BASE="/kuwara-dental-motion"
           find dist -name "*.html" -exec sed -i "s|href=\"/|href=\"${BASE}/|g" {} \;
           find dist -name "*.html" -exec sed -i "s|src=\"/images/|src=\"${BASE}/images/|g" {} \;
           find dist -name "*.html" -exec sed -i "s|data-theme-default=\"/images/|data-theme-default=\"${BASE}/images/|g" {} \;

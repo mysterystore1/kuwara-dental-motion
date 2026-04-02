@@ -1,0 +1,366 @@
+---
+import ThemedImage from "./ThemedImage.astro";
+
+interface Slide {
+  defaultSrc: string;
+  warmSrc?: string;
+  alt: string;
+  label: string;
+  title: string;
+  description: string;
+}
+
+interface Props {
+  slides: Slide[];
+}
+
+const { slides } = Astro.props;
+---
+
+<div class="hero-carousel" data-carousel data-carousel-interval="5200">
+  <div class="hero-carousel__media">
+    {slides.map((slide, index) => (
+      <figure class:list={["hero-carousel__slide", index === 0 && "is-active"]} data-carousel-slide>
+        <ThemedImage
+          defaultSrc={slide.defaultSrc}
+          warmSrc={slide.warmSrc}
+          alt={slide.alt}
+          class="hero-carousel__image"
+          loading={index === 0 ? "eager" : "lazy"}
+        />
+      </figure>
+    ))}
+  </div>
+
+  <div class="hero-carousel__card">
+    <div class="hero-carousel__copy">
+      {slides.map((slide, index) => (
+        <article class:list={["hero-carousel__copy-item", index === 0 && "is-active"]} data-carousel-copy>
+          <span class="hero-carousel__label">{slide.label}</span>
+          <h3>{slide.title}</h3>
+          <p>{slide.description}</p>
+        </article>
+      ))}
+    </div>
+
+    <div class="hero-carousel__footer">
+      <div class="hero-carousel__controls">
+        <button type="button" class="hero-carousel__arrow" data-carousel-prev aria-label="前のスライド">
+          <span aria-hidden="true">←</span>
+        </button>
+        <button type="button" class="hero-carousel__arrow" data-carousel-next aria-label="次のスライド">
+          <span aria-hidden="true">→</span>
+        </button>
+      </div>
+
+      <div class="hero-carousel__dots" role="tablist" aria-label="ヒーローカルーセル">
+        {slides.map((slide, index) => (
+          <button
+            type="button"
+            class:list={["hero-carousel__dot", index === 0 && "is-active"]}
+            data-carousel-dot
+            aria-label={`${index + 1}枚目: ${slide.title}`}
+            aria-selected={index === 0 ? "true" : "false"}
+          ></button>
+        ))}
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  function initCarousel(root) {
+    const slides = Array.from(root.querySelectorAll("[data-carousel-slide]"));
+    const copies = Array.from(root.querySelectorAll("[data-carousel-copy]"));
+    const dots = Array.from(root.querySelectorAll("[data-carousel-dot]"));
+    const prev = root.querySelector("[data-carousel-prev]");
+    const next = root.querySelector("[data-carousel-next]");
+    const interval = Number(root.dataset.carouselInterval || 5200);
+
+    if (slides.length < 2) return;
+
+    let index = 0;
+    let timer = null;
+
+    const setIndex = (nextIndex) => {
+      index = (nextIndex + slides.length) % slides.length;
+
+      slides.forEach((slide, slideIndex) => {
+        slide.classList.toggle("is-active", slideIndex === index);
+      });
+
+      copies.forEach((copy, copyIndex) => {
+        copy.classList.toggle("is-active", copyIndex === index);
+      });
+
+      dots.forEach((dot, dotIndex) => {
+        const active = dotIndex === index;
+        dot.classList.toggle("is-active", active);
+        dot.setAttribute("aria-selected", active ? "true" : "false");
+      });
+    };
+
+    const stop = () => {
+      if (timer) {
+        window.clearInterval(timer);
+        timer = null;
+      }
+    };
+
+    const start = () => {
+      if (reduceMotion) return;
+      stop();
+      timer = window.setInterval(() => setIndex(index + 1), interval);
+    };
+
+    prev?.addEventListener("click", () => {
+      setIndex(index - 1);
+      start();
+    });
+
+    next?.addEventListener("click", () => {
+      setIndex(index + 1);
+      start();
+    });
+
+    dots.forEach((dot, dotIndex) => {
+      dot.addEventListener("click", () => {
+        setIndex(dotIndex);
+        start();
+      });
+    });
+
+    root.addEventListener("mouseenter", stop);
+    root.addEventListener("mouseleave", start);
+    root.addEventListener("focusin", stop);
+    root.addEventListener("focusout", start);
+
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden) stop();
+      else start();
+    });
+
+    start();
+  }
+
+  document.querySelectorAll("[data-carousel]").forEach((root) => initCarousel(root));
+</script>
+
+<style>
+  .hero-carousel {
+    position: absolute;
+    inset: 0;
+  }
+
+  .hero-carousel__media {
+    position: absolute;
+    inset: 2% 2% 18% 16%;
+  }
+
+  .hero-carousel__slide {
+    position: absolute;
+    inset: 0;
+    margin: 0;
+    opacity: 0;
+    transform: translateX(2rem) scale(0.98);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+    pointer-events: none;
+  }
+
+  .hero-carousel__slide.is-active {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+    pointer-events: auto;
+  }
+
+  .hero-carousel__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 38% 62% 46% 54% / 52% 42% 58% 48%;
+    box-shadow: var(--shadow-float);
+  }
+
+  .hero-carousel__card {
+    position: absolute;
+    inset: auto auto 0 0;
+    width: min(22rem, 62%);
+    padding: 1.15rem 1.15rem 1rem;
+    border-radius: 1.8rem;
+    border: 1px solid rgba(125, 173, 200, 0.16);
+    background: rgba(255, 255, 255, 0.92);
+    box-shadow: 0 22px 42px rgba(27, 53, 82, 0.12);
+    backdrop-filter: blur(12px);
+  }
+
+  .hero-carousel__copy {
+    position: relative;
+    min-height: 7.9rem;
+  }
+
+  .hero-carousel__copy-item {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    gap: 0.4rem;
+    opacity: 0;
+    transform: translateY(0.6rem);
+    transition: opacity 0.45s ease, transform 0.45s ease;
+    pointer-events: none;
+  }
+
+  .hero-carousel__copy-item.is-active {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  .hero-carousel__label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    color: var(--color-accent);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+  }
+
+  .hero-carousel__label::after {
+    content: "";
+    width: 2rem;
+    height: 1px;
+    background: currentColor;
+    opacity: 0.45;
+  }
+
+  .hero-carousel__copy-item h3 {
+    font-size: 1.12rem;
+    line-height: 1.45;
+    color: var(--color-ink);
+  }
+
+  .hero-carousel__copy-item p {
+    color: var(--color-text-soft);
+    font-size: 0.92rem;
+    line-height: 1.7;
+  }
+
+  .hero-carousel__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  .hero-carousel__controls,
+  .hero-carousel__dots {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+  }
+
+  .hero-carousel__arrow,
+  .hero-carousel__dot {
+    border: 0;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.2s ease, opacity 0.2s ease;
+  }
+
+  .hero-carousel__arrow {
+    width: 2.3rem;
+    height: 2.3rem;
+    display: inline-grid;
+    place-items: center;
+    border-radius: 999px;
+    background: rgba(125, 173, 200, 0.12);
+    color: var(--color-primary-dark);
+  }
+
+  .hero-carousel__arrow:hover,
+  .hero-carousel__dot:hover {
+    transform: translateY(-1px);
+  }
+
+  .hero-carousel__dot {
+    width: 0.72rem;
+    height: 0.72rem;
+    border-radius: 999px;
+    background: rgba(125, 173, 200, 0.22);
+  }
+
+  .hero-carousel__dot.is-active {
+    width: 2rem;
+    background: linear-gradient(135deg, var(--color-accent), var(--color-primary-dark));
+  }
+
+  :global(html[data-theme="warm"]) .hero-carousel__slide {
+    transform: translateX(1.4rem) translateY(0.3rem) scale(0.97) rotate(0.8deg);
+  }
+
+  :global(html[data-theme="warm"]) .hero-carousel__slide.is-active {
+    transform: translateX(0) translateY(0) scale(1) rotate(-1.1deg);
+  }
+
+  :global(html[data-theme="warm"]) .hero-carousel__image {
+    border-radius: 2.9rem;
+  }
+
+  :global(html[data-theme="warm"]) .hero-carousel__card {
+    border-radius: 2.2rem;
+    background: linear-gradient(180deg, rgba(255, 250, 244, 0.96), rgba(255, 242, 229, 0.96));
+    border-color: rgba(211, 159, 116, 0.22);
+    transform: rotate(1.5deg);
+  }
+
+  :global(html[data-theme="warm"]) .hero-carousel__arrow {
+    background: rgba(229, 138, 82, 0.15);
+    color: var(--color-accent);
+  }
+
+  :global(html[data-theme="warm"]) .hero-carousel__dot {
+    background: rgba(229, 138, 82, 0.22);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-carousel__slide,
+    .hero-carousel__copy-item {
+      transition: none;
+    }
+  }
+
+  @media (max-width: 900px) {
+    .hero-carousel__media {
+      inset: 4% 5% 24% 12%;
+    }
+
+    .hero-carousel__card {
+      width: min(22rem, 72%);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .hero-carousel__media {
+      inset: 4% 3% 28% 10%;
+    }
+
+    .hero-carousel__card {
+      width: min(20rem, 78%);
+      padding: 1rem;
+    }
+
+    .hero-carousel__copy {
+      min-height: 8.8rem;
+    }
+
+    .hero-carousel__copy-item h3 {
+      font-size: 1rem;
+    }
+
+    .hero-carousel__copy-item p {
+      font-size: 0.86rem;
+    }
+  }
+</style>

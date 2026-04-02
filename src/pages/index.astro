@@ -3,8 +3,36 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import SectionCTA from "../components/SectionCTA.astro";
 import DentalIcon from "../components/DentalIcon.astro";
 import ThemedImage from "../components/ThemedImage.astro";
+import HeroCarousel from "../components/HeroCarousel.astro";
 import { SITE, THREE_PROMISES } from "../data/site";
 import { VISUALS } from "../data/visualAssets";
+
+const heroSlides = [
+  {
+    defaultSrc: VISUALS.heroWelcome.defaultSrc,
+    warmSrc: VISUALS.heroWelcome.warmSrc,
+    alt: VISUALS.heroWelcome.alt,
+    label: "ご来院時",
+    title: "まずは、話を聞くところから。",
+    description: "来院した瞬間から緊張が少しほどけるように、明るさと声かけのやわらかさを大切にしています。",
+  },
+  {
+    defaultSrc: VISUALS.consultation.defaultSrc,
+    warmSrc: VISUALS.consultation.warmSrc,
+    alt: VISUALS.consultation.alt,
+    label: "カウンセリング",
+    title: "何が不安かを、先にうかがいます。",
+    description: "今つらいこと、前の歯医者で嫌だったこと、今回いちばん気になっていることから整理します。",
+  },
+  {
+    defaultSrc: VISUALS.pediatric.defaultSrc,
+    warmSrc: VISUALS.pediatric.warmSrc,
+    alt: VISUALS.pediatric.alt,
+    label: "ご家族で通院",
+    title: "親子でも通いやすい空気感を。",
+    description: "お子さま連れでも身構えすぎずに来られるように、やわらかい雰囲気と説明のわかりやすさを整えています。",
+  },
+] as const;
 
 const symptomItems = [
   {
@@ -90,7 +118,7 @@ const faqPreview = [
 >
   <section class="home-hero wave-divider">
     <div class="container-narrow home-hero__inner">
-      <div class="home-hero__copy">
+      <div class="home-hero__copy" data-reveal data-reveal-origin="left">
         <p class="section-kicker">ご来院をご検討の方へ</p>
         <p class="home-hero__clinic">{SITE.name}</p>
         <h1 class="home-hero__title">歯医者がこわくて、<br />なかなか行けていない方へ。</h1>
@@ -110,7 +138,7 @@ const faqPreview = [
         </div>
       </div>
 
-      <div class="home-hero__visual">
+      <div class="home-hero__visual" data-reveal data-reveal-origin="right" style="--reveal-delay: 120ms;">
         <div class="hero-orb hero-orb--one"></div>
         <div class="hero-orb hero-orb--two"></div>
         <ThemedImage
@@ -127,33 +155,14 @@ const faqPreview = [
           class="decor-float decor-float--loop home-hero__loop"
           loading="eager"
         />
-        <figure class="hero-photo hero-photo--main">
-          <ThemedImage
-            defaultSrc={VISUALS.heroWelcome.defaultSrc}
-            warmSrc={VISUALS.heroWelcome.warmSrc}
-            alt={VISUALS.heroWelcome.alt}
-            loading="eager"
-          />
-        </figure>
-        <figure class="hero-photo hero-photo--card">
-          <ThemedImage
-            defaultSrc={VISUALS.consultation.defaultSrc}
-            warmSrc={VISUALS.consultation.warmSrc}
-            alt={VISUALS.consultation.alt}
-            loading="eager"
-          />
-          <figcaption>
-            <span class="eyebrow">初診について</span>
-            <strong>初回は、お話と確認が中心です。</strong>
-          </figcaption>
-        </figure>
+        <HeroCarousel slides={heroSlides} />
       </div>
     </div>
   </section>
 
   <section class="section-padding blob-section">
     <div class="container-narrow reassurance">
-      <div class="reassurance__lead">
+      <div class="reassurance__lead" data-reveal>
         <p class="section-kicker">ご来院前に</p>
         <h2 class="section-title">こんな不安、ありませんか？</h2>
         <p class="section-lead">
@@ -163,13 +172,13 @@ const faqPreview = [
 
       <div class="reassurance__layout">
         <div class="reassurance__chips">
-          <span class="reassurance__chip">何年も歯医者に行っていない</span>
-          <span class="reassurance__chip">怒られそうで行きづらい</span>
-          <span class="reassurance__chip">痛い治療のイメージが強い</span>
-          <span class="reassurance__chip">まずは相談だけしたい</span>
+          <span class="reassurance__chip" data-reveal style="--reveal-delay: 0ms;">何年も歯医者に行っていない</span>
+          <span class="reassurance__chip" data-reveal style="--reveal-delay: 80ms;">怒られそうで行きづらい</span>
+          <span class="reassurance__chip" data-reveal style="--reveal-delay: 160ms;">痛い治療のイメージが強い</span>
+          <span class="reassurance__chip" data-reveal style="--reveal-delay: 240ms;">まずは相談だけしたい</span>
         </div>
 
-        <div class="reassurance__panel">
+        <div class="reassurance__panel" data-reveal style="--reveal-delay: 140ms;">
           <p class="eyebrow">当院の考え方</p>
           <h3>何年ぶりでも大丈夫です。今の状態から一緒に考えます。</h3>
           <p>
@@ -184,11 +193,13 @@ const faqPreview = [
 
   <section class="section-padding promise-section">
     <div class="container-narrow">
-      <p class="section-kicker">3つの約束</p>
-      <h2 class="section-title">この医院の強みとしてお伝えしたい、3つの約束</h2>
+      <div data-reveal>
+        <p class="section-kicker">3つの約束</p>
+        <h2 class="section-title">この医院の強みとしてお伝えしたい、3つの約束</h2>
+      </div>
       <div class="promise-rows">
         {reasonItems.map((item, index) => (
-          <article class:list={["promise-row", index % 2 === 1 && "reverse"]}>
+          <article class:list={["promise-row", index % 2 === 1 && "reverse"]} data-reveal style={`--reveal-delay: ${index * 110}ms;`}>
             <div class="promise-row__visual shape-wrap">
               <ThemedImage
                 defaultSrc={item.imageDefault}
@@ -207,8 +218,8 @@ const faqPreview = [
       </div>
 
       <div class="promise-summary">
-        {THREE_PROMISES.map((promise) => (
-          <div class="promise-summary__item soft-panel">
+        {THREE_PROMISES.map((promise, index) => (
+          <div class="promise-summary__item soft-panel" data-reveal style={`--reveal-delay: ${index * 90}ms;`}>
             <span class="promise-summary__icon">
               <DentalIcon name={promise.icon === "shield" ? "shield" : promise.icon === "heart" ? "heart" : "hand"} size={24} />
             </span>
@@ -224,24 +235,24 @@ const faqPreview = [
 
   <section class="section-padding first-step">
     <div class="container-narrow first-step__inner">
-      <div class="first-step__copy">
+      <div class="first-step__copy" data-reveal data-reveal-origin="left">
         <p class="section-kicker">初診の流れ</p>
         <h2 class="section-title">初回は、あなたの話を聞く時間です。</h2>
         <p class="section-lead">
           何が気になっているのか、過去にどんなことが嫌だったのか。そこを聞いたうえで、必要な確認とご説明に進みます。
         </p>
         <div class="first-step__grid">
-          <div class="soft-panel">
+          <div class="soft-panel" data-reveal style="--reveal-delay: 60ms;">
             <p class="first-step__label">Step 01</p>
             <h3>ご予約・受付</h3>
             <p>WEB、LINE、お電話からご予約いただけます。初診の方はご予約時間の10分前を目安にお越しください。</p>
           </div>
-          <div class="soft-panel">
+          <div class="soft-panel" data-reveal style="--reveal-delay: 140ms;">
             <p class="first-step__label">Step 02</p>
             <h3>カウンセリングと検査</h3>
             <p>気になっている症状や不安をうかがい、必要に応じてレントゲンや口腔内写真で状態を確認します。</p>
           </div>
-          <div class="soft-panel">
+          <div class="soft-panel" data-reveal style="--reveal-delay: 220ms;">
             <p class="first-step__label">Step 03</p>
             <h3>ご説明と今後のご提案</h3>
             <p>今の状態、必要な治療、通院の目安をお伝えします。どう進めるかは、そのうえで一緒に考えましょう。</p>
@@ -253,7 +264,7 @@ const faqPreview = [
         </div>
       </div>
 
-      <div class="first-step__visual shape-wrap">
+      <div class="first-step__visual shape-wrap" data-reveal data-reveal-origin="right" style="--reveal-delay: 160ms;">
         <ThemedImage
           defaultSrc={VISUALS.consultation.defaultSrc}
           warmSrc={VISUALS.consultation.warmSrc}
@@ -266,7 +277,7 @@ const faqPreview = [
 
   <section class="section-padding symptoms-overview blob-section">
     <div class="container-narrow">
-      <div class="section-header">
+      <div class="section-header" data-reveal>
         <p class="section-kicker">症状から探す</p>
         <h2 class="section-title">今つらい症状がある方はこちら</h2>
         <p class="section-lead">
@@ -275,8 +286,8 @@ const faqPreview = [
       </div>
 
       <div class="symptoms-overview__grid">
-        {symptomItems.map((item) => (
-          <a href={item.href} class="symptoms-overview__card">
+        {symptomItems.map((item, index) => (
+          <a href={item.href} class="symptoms-overview__card" data-reveal style={`--reveal-delay: ${index * 80}ms;`}>
             <span class="symptoms-overview__icon">
               <DentalIcon name={item.icon as any} size={34} />
             </span>
@@ -290,7 +301,7 @@ const faqPreview = [
 
   <section class="section-padding services-overview">
     <div class="container-narrow">
-      <div class="section-header">
+      <div class="section-header" data-reveal>
         <p class="section-kicker">診療内容</p>
         <h2 class="section-title">治療内容から知りたい方はこちら</h2>
         <p class="section-lead">
@@ -299,8 +310,8 @@ const faqPreview = [
       </div>
 
       <div class="services-overview__grid">
-        {serviceItems.map((item) => (
-          <a href={item.href} class="services-overview__item">
+        {serviceItems.map((item, index) => (
+          <a href={item.href} class="services-overview__item" data-reveal style={`--reveal-delay: ${index * 70}ms;`}>
             <span class="services-overview__icon">
               <DentalIcon name={item.icon as any} size={32} />
             </span>
@@ -316,7 +327,7 @@ const faqPreview = [
 
   <section class="section-padding doctor-highlight">
     <div class="container-narrow doctor-highlight__inner">
-      <div class="doctor-highlight__copy">
+      <div class="doctor-highlight__copy" data-reveal data-reveal-origin="left">
         <p class="section-kicker">院長より</p>
         <h2 class="section-title">歯医者は怖い場所だと知っているからこそ、急かさない診療を大切にしています。</h2>
         <p class="section-lead">
@@ -328,7 +339,7 @@ const faqPreview = [
         <a href="/clinic/doctor/" class="btn-secondary">院長紹介を見る</a>
       </div>
 
-      <div class="doctor-highlight__visual">
+      <div class="doctor-highlight__visual" data-reveal data-reveal-origin="right" style="--reveal-delay: 120ms;">
         <figure class="doctor-highlight__portrait">
           <ThemedImage
             defaultSrc={VISUALS.doctorPortrait.defaultSrc}
@@ -351,13 +362,13 @@ const faqPreview = [
 
   <section class="section-padding clinic-preview blob-section">
     <div class="container-narrow">
-      <div class="section-header">
+      <div class="section-header" data-reveal>
         <p class="section-kicker">院内紹介</p>
         <h2 class="section-title">院内の空気感も、安心して通えるかどうかの大事なポイントです。</h2>
       </div>
 
       <div class="clinic-preview__grid">
-        <figure class="clinic-preview__photo clinic-preview__photo--large">
+        <figure class="clinic-preview__photo clinic-preview__photo--large" data-reveal style="--reveal-delay: 0ms;">
           <ThemedImage
             defaultSrc={VISUALS.reception.defaultSrc}
             warmSrc={VISUALS.reception.warmSrc}
@@ -365,7 +376,7 @@ const faqPreview = [
             loading="lazy"
           />
         </figure>
-        <figure class="clinic-preview__photo">
+        <figure class="clinic-preview__photo" data-reveal style="--reveal-delay: 90ms;">
           <ThemedImage
             defaultSrc={VISUALS.consultation.defaultSrc}
             warmSrc={VISUALS.consultation.warmSrc}
@@ -373,7 +384,7 @@ const faqPreview = [
             loading="lazy"
           />
         </figure>
-        <figure class="clinic-preview__photo">
+        <figure class="clinic-preview__photo" data-reveal style="--reveal-delay: 180ms;">
           <ThemedImage
             defaultSrc={VISUALS.room.defaultSrc}
             warmSrc={VISUALS.room.warmSrc}
@@ -391,14 +402,14 @@ const faqPreview = [
 
   <section class="section-padding faq-preview">
     <div class="container-narrow faq-preview__inner">
-      <div class="section-header">
+      <div class="section-header" data-reveal>
         <p class="section-kicker">よくあるご質問</p>
         <h2 class="section-title">初診前によくいただくご質問</h2>
       </div>
 
       <div class="faq-preview__list">
-        {faqPreview.map((item) => (
-          <details class="faq-preview__item">
+        {faqPreview.map((item, index) => (
+          <details class="faq-preview__item" data-reveal style={`--reveal-delay: ${index * 80}ms;`}>
             <summary>{item.q}</summary>
             <p>{item.a}</p>
           </details>
@@ -413,7 +424,7 @@ const faqPreview = [
 
   <section class="section-padding access-preview">
     <div class="container-narrow access-preview__inner">
-      <div class="access-preview__copy">
+      <div class="access-preview__copy" data-reveal data-reveal-origin="left">
         <p class="section-kicker">アクセス</p>
         <h2 class="section-title">藤沢駅南口から徒歩3分。通院しやすい場所にあります。</h2>
         <dl class="access-preview__list">
@@ -430,7 +441,7 @@ const faqPreview = [
         </div>
       </div>
 
-      <div class="access-preview__map soft-panel">
+      <div class="access-preview__map soft-panel" data-reveal data-reveal-origin="right" style="--reveal-delay: 120ms;">
         <p class="eyebrow">所在地</p>
         <strong>{SITE.address.station}</strong>
         <p>駅からのルートと医院の位置を、ひと目で確認できるようにまとめています。</p>
@@ -1046,6 +1057,10 @@ const faqPreview = [
     background: linear-gradient(180deg, rgba(255, 250, 244, 0.96), rgba(255, 242, 229, 0.96));
   }
 
+  :global(html[data-theme="warm"]) .home-hero__visual {
+    min-height: 36rem;
+  }
+
   :global(html[data-theme="warm"]) .reassurance__chip {
     background: rgba(255, 249, 242, 0.95);
     border-color: rgba(211, 159, 116, 0.22);
@@ -1056,9 +1071,18 @@ const faqPreview = [
     background: rgba(245, 245, 235, 0.96);
   }
 
+  :global(html[data-theme="warm"]) .reassurance__chip:nth-child(odd) {
+    rotate: -2deg;
+  }
+
+  :global(html[data-theme="warm"]) .reassurance__chip:nth-child(even) {
+    rotate: 1.5deg;
+  }
+
   :global(html[data-theme="warm"]) .reassurance__panel {
     background: linear-gradient(180deg, rgba(255, 250, 244, 0.96), rgba(255, 244, 232, 0.96));
     border-color: rgba(211, 159, 116, 0.22);
+    border-radius: 2.6rem;
   }
 
   :global(html[data-theme="warm"]) .promise-section {
@@ -1086,9 +1110,18 @@ const faqPreview = [
     border-color: rgba(211, 159, 116, 0.2);
   }
 
+  :global(html[data-theme="warm"]) .symptoms-overview__card:nth-child(odd) {
+    rotate: -1.5deg;
+  }
+
+  :global(html[data-theme="warm"]) .symptoms-overview__card:nth-child(even) {
+    rotate: 1.2deg;
+  }
+
   :global(html[data-theme="warm"]) .services-overview__item {
     background: linear-gradient(180deg, rgba(255, 250, 244, 0.96), rgba(255, 242, 229, 0.96));
     border-color: rgba(211, 159, 116, 0.2);
+    border-radius: 2.15rem;
   }
 
   :global(html[data-theme="warm"]) .doctor-highlight {
@@ -1109,6 +1142,18 @@ const faqPreview = [
   :global(html[data-theme="warm"]) .access-preview__placeholder {
     background: rgba(255, 240, 225, 0.82);
     box-shadow: inset 0 0 0 1px rgba(211, 159, 116, 0.16);
+  }
+
+  :global(html[data-theme="warm"]) .clinic-preview__photo--large {
+    rotate: -1.6deg;
+  }
+
+  :global(html[data-theme="warm"]) .clinic-preview__photo:not(.clinic-preview__photo--large):first-of-type {
+    rotate: 1.8deg;
+  }
+
+  :global(html[data-theme="warm"]) .clinic-preview__photo:last-of-type {
+    rotate: -1.2deg;
   }
 
   @media (max-width: 1080px) {
