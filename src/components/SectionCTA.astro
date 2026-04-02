@@ -4,11 +4,25 @@ import { SITE } from "../data/site";
 interface Props {
   heading?: string;
   text?: string;
+  note?: string;
+  items?: string[];
+  secondaryLabel?: string;
+  secondaryHref?: string;
+  tertiaryLabel?: string;
+  tertiaryHref?: string;
+  showPhoneNumber?: boolean;
 }
 
 const {
   heading = "まずは、お気軽にご相談ください。",
   text = "治療するかどうかは、来てから一緒に考えましょう。",
+  note = "",
+  items = [],
+  secondaryLabel = "LINEで相談",
+  secondaryHref = SITE.reserve.line,
+  tertiaryLabel = "",
+  tertiaryHref = "",
+  showPhoneNumber = true,
 } = Astro.props;
 ---
 
@@ -19,12 +33,28 @@ const {
         <p class="section-kicker">ご予約・ご相談</p>
         <h2 class="cta-heading">{heading}</h2>
         <p class="cta-text">{text}</p>
+        {note && <p class="cta-note">{note}</p>}
+        {items.length > 0 && (
+          <ul class="cta-list">
+            {items.map((item) => <li>{item}</li>)}
+          </ul>
+        )}
       </div>
 
       <div class="cta-actions">
         <a href="/reserve/" class="btn-primary">WEB予約する</a>
-        <a href={SITE.reserve.line} class="btn-secondary" target="_blank" rel="noopener">LINEで相談</a>
-        <a href={SITE.phoneHref} class="cta-phone">{SITE.phone}</a>
+        <a
+          href={secondaryHref}
+          class="btn-secondary"
+          target={secondaryHref.startsWith("http") ? "_blank" : undefined}
+          rel={secondaryHref.startsWith("http") ? "noopener" : undefined}
+        >
+          {secondaryLabel}
+        </a>
+        {tertiaryLabel && tertiaryHref && (
+          <a href={tertiaryHref} class="btn-secondary cta-actions__tertiary">{tertiaryLabel}</a>
+        )}
+        {showPhoneNumber && <a href={SITE.phoneHref} class="cta-phone">{SITE.phone}</a>}
       </div>
     </div>
   </div>
@@ -90,6 +120,37 @@ const {
     max-width: 40rem;
   }
 
+  .cta-note {
+    margin-top: 0.9rem;
+    color: var(--color-heading);
+    font-weight: 700;
+  }
+
+  .cta-list {
+    display: grid;
+    gap: 0.55rem;
+    margin: 1rem 0 0;
+    padding: 0;
+    list-style: none;
+    color: var(--color-text-soft);
+  }
+
+  .cta-list li {
+    position: relative;
+    padding-left: 1.2rem;
+  }
+
+  .cta-list li::before {
+    content: "";
+    position: absolute;
+    top: 0.82rem;
+    left: 0;
+    width: 0.42rem;
+    height: 0.42rem;
+    border-radius: 999px;
+    background: var(--color-accent);
+  }
+
   .cta-actions {
     position: relative;
     z-index: 1;
@@ -103,6 +164,10 @@ const {
     font-size: 1.05rem;
     font-weight: 700;
     letter-spacing: 0.02em;
+  }
+
+  .cta-actions__tertiary {
+    background: rgba(255, 255, 255, 0.72);
   }
 
   @media (max-width: 800px) {

@@ -296,6 +296,10 @@ const { slides } = Astro.props;
     background: linear-gradient(135deg, var(--color-accent), var(--color-primary-dark));
   }
 
+  :global(html[data-theme="warm"]) .hero-carousel__media {
+    inset: 0 4% 19% 10%;
+  }
+
   :global(html[data-theme="warm"]) .hero-carousel__slide {
     transform: translateX(1.4rem) translateY(0.3rem) scale(0.97) rotate(0.8deg);
   }
@@ -305,14 +309,17 @@ const { slides } = Astro.props;
   }
 
   :global(html[data-theme="warm"]) .hero-carousel__image {
-    border-radius: 2.9rem;
+    border-radius: 28% 72% 42% 58% / 58% 34% 66% 42%;
   }
 
   :global(html[data-theme="warm"]) .hero-carousel__card {
+    inset: auto 0 0 auto;
+    width: min(24rem, 66%);
     border-radius: 2.2rem;
     background: linear-gradient(180deg, rgba(255, 250, 244, 0.96), rgba(255, 242, 229, 0.96));
     border-color: rgba(211, 159, 116, 0.22);
     transform: rotate(1.5deg);
+    box-shadow: 0 26px 48px rgba(111, 92, 62, 0.16);
   }
 
   :global(html[data-theme="warm"]) .hero-carousel__arrow {
@@ -341,6 +348,18 @@ const { slides } = Astro.props;
     }
   }
 
+  @media (max-width: 900px) {
+    :global(html[data-theme="warm"]) .hero-carousel__media {
+      inset: 4% 5% 24% 12%;
+    }
+
+    :global(html[data-theme="warm"]) .hero-carousel__card {
+      inset: auto auto 0 0;
+      width: min(22rem, 72%);
+      transform: rotate(0.8deg);
+    }
+  }
+
   @media (max-width: 640px) {
     .hero-carousel__media {
       inset: 4% 3% 28% 10%;
@@ -361,6 +380,18 @@ const { slides } = Astro.props;
 
     .hero-carousel__copy-item p {
       font-size: 0.86rem;
+    }
+  }
+
+  @media (max-width: 640px) {
+    :global(html[data-theme="warm"]) .hero-carousel__media {
+      inset: 4% 3% 28% 8%;
+    }
+
+    :global(html[data-theme="warm"]) .hero-carousel__card {
+      inset: auto auto 0 0;
+      width: min(20rem, 80%);
+      transform: none;
     }
   }
 </style>

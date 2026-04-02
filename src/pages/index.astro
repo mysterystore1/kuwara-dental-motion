@@ -69,30 +69,60 @@ const serviceItems = [
   { href: "/services/whitening/", title: "ホワイトニング", description: "自然な明るさを目指す審美ケアです", icon: "whitening" },
 ] as const;
 
-const reasonItems = [
+const promiseItems = [
   {
     number: "01",
+    badge: "初回はカウンセリング中心",
     title: "まず、お話を聞かせてください。",
     text: "初回はカウンセリングが中心です。いきなり治療は始めません。相談だけで終わっても大丈夫です。",
+    points: ["相談だけでも大丈夫です", "前の歯医者で嫌だったことも話せます"],
     imageDefault: VISUALS.consultation.defaultSrc,
     imageWarm: VISUALS.consultation.warmSrc,
     alt: "カウンセリングの様子",
   },
   {
     number: "02",
+    badge: "痛みに配慮した進め方",
     title: "怖くなったら、手を挙げてください。",
     text: "痛かったり怖くなったりしたら、その場で止めます。我慢したまま進めることはしません。",
+    points: ["痛かったら、その場で止めます", "表面麻酔や声かけで緊張を和らげます"],
     imageDefault: VISUALS.treatment.defaultSrc,
     imageWarm: VISUALS.treatment.warmSrc,
     alt: "歯科治療の風景",
   },
   {
     number: "03",
+    badge: "説明を先にする診療",
     title: "何をするか、先にきちんとお伝えします。",
     text: "今の状態、必要な治療、通院の目安まで、先にお話しします。わからないまま口の中を触ることはありません。",
+    points: ["専門用語を使いすぎません", "納得してから治療を始めます"],
     imageDefault: VISUALS.doctorPortrait.defaultSrc,
     imageWarm: VISUALS.doctorPortrait.warmSrc,
     alt: "やわらかな表情で迎える歯科医師",
+  },
+] as const;
+
+const benefitItems = [
+  {
+    icon: "shield",
+    label: "痛みに配慮",
+    title: "痛みが苦手な方も、相談しやすい進め方です。",
+    text: "表面麻酔や細い針、声かけを組み合わせながら進めます。怖くなったら、その場で止められます。",
+    points: ["我慢したまま進めません", "急な痛みには応急処置も行います"],
+  },
+  {
+    icon: "heart",
+    label: "責めない対応",
+    title: "何年ぶりでも大丈夫。責めずに今からを考えます。",
+    text: "来院が空いてしまったことを責めるのではなく、今のお口の状態からどう整えるかを一緒に考えます。",
+    points: ["怒られるのが苦手な方へ", "久しぶりでも歓迎です"],
+  },
+  {
+    icon: "chat",
+    label: "相談しやすさ",
+    title: "何をするかがわかるから、不安が残りにくい。",
+    text: "今の状態、必要な治療、通院の目安まで先にお伝えします。説明を聞いてから決めていただけます。",
+    points: ["初回はお話が中心です", "相談だけで終わっても大丈夫です"],
   },
 ] as const;
 
@@ -122,13 +152,27 @@ const faqPreview = [
         <p class="section-kicker">ご来院をご検討の方へ</p>
         <p class="home-hero__clinic">{SITE.name}</p>
         <h1 class="home-hero__title">歯医者がこわくて、<br />なかなか行けていない方へ。</h1>
+        <p class="home-hero__promise">まずはお話を聞くところから始めます。</p>
         <p class="home-hero__text">
-          何年ぶりでも大丈夫です。まずは今、気になっていることを聞かせてください。
+          痛みが苦手な方も、怒られるのが苦手な方も大丈夫です。無理に治療を進めることはありません。
         </p>
+
+        <div class="home-hero__microcopy">
+          <span>痛みが苦手な方へ</span>
+          <span>怒られるのが苦手な方へ</span>
+          <span>相談だけでも大丈夫です</span>
+        </div>
+
+        <div class="home-hero__notice soft-panel">
+          <p class="eyebrow">ご予約前に</p>
+          <strong>何をすればいいかわからなくても、そのままで構いません。</strong>
+          <p>今つらいところや、前の歯医者で嫌だったことを話していただければ、そこから一緒に整理します。</p>
+        </div>
 
         <div class="home-hero__actions">
           <a href="/reserve/" class="btn-primary">WEB予約する</a>
-          <a href="/first-visit/" class="btn-secondary">初めての方へ</a>
+          <a href={SITE.phoneHref} class="btn-secondary">電話で相談</a>
+          <a href="/first-visit/" class="btn-secondary home-hero__link">初めての方へ</a>
         </div>
 
         <div class="home-hero__chips">
@@ -180,10 +224,10 @@ const faqPreview = [
 
         <div class="reassurance__panel" data-reveal style="--reveal-delay: 140ms;">
           <p class="eyebrow">当院の考え方</p>
-          <h3>何年ぶりでも大丈夫です。今の状態から一緒に考えます。</h3>
+          <h3>状態を責めず、まずは今のお困りごとをうかがいます。</h3>
           <p>
-            すぐに治療を始めるのではなく、今困っていることや、不安に思っていることを先に整理します。
-            説明を聞いてから考えたい方も、その場で決めなくて大丈夫です。
+            「何をされるか」より「どう扱われるか」が不安で足が止まってしまう方もいます。
+            だから当院では、すぐに治療を始めるのではなく、今の不安と症状を先に言葉にする時間を大切にしています。
           </p>
           <a href="/dental-anxiety/" class="btn-secondary">歯医者が怖い方へ</a>
         </div>
@@ -195,12 +239,13 @@ const faqPreview = [
     <div class="container-narrow">
       <div data-reveal>
         <p class="section-kicker">3つの約束</p>
-        <h2 class="section-title">この医院の強みとしてお伝えしたい、3つの約束</h2>
+        <h2 class="section-title">診療の土台にしている、3つの約束</h2>
+        <p class="section-lead">説明ではなく、この医院の強みとして伝えたい約束です。初めての方にも、一目でわかる形にしています。</p>
       </div>
-      <div class="promise-rows">
-        {reasonItems.map((item, index) => (
-          <article class:list={["promise-row", index % 2 === 1 && "reverse"]} data-reveal style={`--reveal-delay: ${index * 110}ms;`}>
-            <div class="promise-row__visual shape-wrap">
+      <div class="promise-cards">
+        {promiseItems.map((item, index) => (
+          <article class="promise-card" data-reveal style={`--reveal-delay: ${index * 110}ms;`}>
+            <div class="promise-card__media">
               <ThemedImage
                 defaultSrc={item.imageDefault}
                 warmSrc={item.imageWarm}
@@ -208,10 +253,16 @@ const faqPreview = [
                 loading="lazy"
               />
             </div>
-            <div class="promise-row__copy">
-              <span class="promise-row__number">{item.number}</span>
+            <div class="promise-card__body">
+              <div class="promise-card__top">
+                <span class="promise-card__number">{item.number}</span>
+                <span class="promise-card__badge">{item.badge}</span>
+              </div>
               <h3>{item.title}</h3>
               <p>{item.text}</p>
+              <ul class="promise-card__points">
+                {item.points.map((point) => <li>{point}</li>)}
+              </ul>
             </div>
           </article>
         ))}
@@ -299,6 +350,36 @@ const faqPreview = [
     </div>
   </section>
 
+  <section class="section-padding reasons-section">
+    <div class="container-narrow">
+      <div class="section-header" data-reveal>
+        <p class="section-kicker">選ばれる理由</p>
+        <h2 class="section-title">この医院だから、ここなら相談してもよさそうと思える理由</h2>
+        <p class="section-lead">
+          なんとなく安心そう、で終わらせず、患者さんにとってのメリットが見える形で整理しています。
+        </p>
+      </div>
+
+      <div class="reasons-grid">
+        {benefitItems.map((item, index) => (
+          <article class="reason-card soft-panel" data-reveal style={`--reveal-delay: ${index * 100}ms;`}>
+            <div class="reason-card__header">
+              <span class="reason-card__icon">
+                <DentalIcon name={item.icon as any} size={26} />
+              </span>
+              <span class="reason-card__label">{item.label}</span>
+            </div>
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
+            <ul class="reason-card__points">
+              {item.points.map((point) => <li>{point}</li>)}
+            </ul>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
   <section class="section-padding services-overview">
     <div class="container-narrow">
       <div class="section-header" data-reveal>
@@ -329,12 +410,12 @@ const faqPreview = [
     <div class="container-narrow doctor-highlight__inner">
       <div class="doctor-highlight__copy" data-reveal data-reveal-origin="left">
         <p class="section-kicker">院長より</p>
-        <h2 class="section-title">歯医者は怖い場所だと知っているからこそ、急かさない診療を大切にしています。</h2>
+        <h2 class="section-title">「ここなら大丈夫」と思ってもらえることが、いちばん大切だと思っています。</h2>
         <p class="section-lead">
-          歯医者が苦手な方にとって、予約をして来院するだけでも大きな一歩です。その一歩を無駄にしないよう、急かさず、置いていかない診療を大切にしています。
+          歯医者が苦手な方ほど、来るまでに勇気がいると思っています。だからこそ、いきなり治療を進めるのではなく、まずは安心して話せる時間を大切にしています。
         </p>
         <div class="doctor-highlight__quote soft-panel">
-          <p>来てくれたこと自体が一歩目です。その一歩を、ちゃんと受け止める歯科医院でありたいと思っています。</p>
+          <p>怖い気持ちのまま来てくださる方に、「来てよかった」と思ってもらえる時間にしたい。それが私たちの役割です。</p>
         </div>
         <a href="/clinic/doctor/" class="btn-secondary">院長紹介を見る</a>
       </div>
@@ -459,7 +540,18 @@ const faqPreview = [
 
   <SectionCTA
     heading="まずは、お気軽にご相談ください。"
-    text="相談だけでも大丈夫です。今の状態を確認して、どうするかは来てから一緒に考えましょう。"
+    text="治療するかどうかは、来てから一緒に決めましょう。何をすればいいかわからない状態でも、そのままで大丈夫です。"
+    note="無理に治療を進めることはありません。"
+    items={[
+      "相談だけでも大丈夫です",
+      "歯が痛い、しみる、詰め物が取れた方もご連絡ください",
+      "初回はお話と状態確認が中心です",
+    ]}
+    secondaryLabel="電話で相談"
+    secondaryHref={SITE.phoneHref}
+    tertiaryLabel="初めての方へ"
+    tertiaryHref="/first-visit/"
+    showPhoneNumber={false}
   />
 </BaseLayout>
 
@@ -501,11 +593,56 @@ const faqPreview = [
     letter-spacing: -0.04em;
   }
 
+  .home-hero__promise {
+    margin-top: 1rem;
+    color: var(--color-heading);
+    font-size: clamp(1.18rem, 2vw, 1.55rem);
+    font-weight: 700;
+  }
+
   .home-hero__text {
-    margin-top: 1.2rem;
+    margin-top: 0.8rem;
     color: var(--color-text);
     font-size: 1rem;
     max-width: 34rem;
+  }
+
+  .home-hero__microcopy {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-top: 1rem;
+  }
+
+  .home-hero__microcopy span {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.3rem;
+    padding: 0.55rem 0.9rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.74);
+    border: 1px solid rgba(125, 173, 200, 0.16);
+    color: var(--color-ink);
+    font-size: 0.86rem;
+    font-weight: 600;
+  }
+
+  .home-hero__notice {
+    display: grid;
+    gap: 0.5rem;
+    margin-top: 1.2rem;
+    max-width: 32rem;
+  }
+
+  .home-hero__notice strong {
+    color: var(--color-heading);
+    font-size: 1rem;
+  }
+
+  .home-hero__notice p:last-child {
+    color: var(--color-text-soft);
+    font-size: 0.92rem;
+    line-height: 1.7;
   }
 
   .home-hero__actions {
@@ -549,18 +686,6 @@ const faqPreview = [
     background: rgba(219, 139, 87, 0.12);
   }
 
-  .hero-photo {
-    position: absolute;
-    overflow: hidden;
-    box-shadow: var(--shadow-float);
-  }
-
-  .hero-photo img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
   .home-hero__spark {
     top: 1.5rem;
     right: 2rem;
@@ -569,34 +694,6 @@ const faqPreview = [
   .home-hero__loop {
     right: 0;
     bottom: -0.6rem;
-  }
-
-  .hero-photo--main {
-    inset: 2% 2% 18% 16%;
-    border-radius: 38% 62% 46% 54% / 52% 42% 58% 48%;
-  }
-
-  .hero-photo--card {
-    inset: auto auto 0 0;
-    width: min(20rem, 58%);
-    border-radius: 1.7rem;
-    background: rgba(255,255,255,0.92);
-  }
-
-  .hero-photo--card img {
-    aspect-ratio: 4 / 3;
-  }
-
-  .hero-photo--card figcaption {
-    display: grid;
-    gap: 0.4rem;
-    padding: 1.05rem 1.15rem 1.15rem;
-  }
-
-  .hero-photo--card strong {
-    color: var(--color-ink);
-    font-size: 0.98rem;
-    line-height: 1.55;
   }
 
   .reassurance__lead,
@@ -662,50 +759,96 @@ const faqPreview = [
       linear-gradient(180deg, rgba(255,255,255,0.94), rgba(244,249,253,0.94));
   }
 
-  .promise-rows {
+  .promise-cards {
     display: grid;
-    gap: 3rem;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.15rem;
     margin-top: 2rem;
   }
 
-  .promise-row {
+  .promise-card {
+    overflow: hidden;
+    border: 1px solid rgba(125, 173, 200, 0.15);
+    border-radius: 2rem;
+    background: rgba(255, 255, 255, 0.94);
+    box-shadow: var(--shadow-soft);
+  }
+
+  .promise-card__media img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .promise-card__body {
     display: grid;
-    grid-template-columns: 0.92fr 1.08fr;
-    gap: 2rem;
+    gap: 0.8rem;
+    padding: 1.35rem;
+  }
+
+  .promise-card__top {
+    display: flex;
     align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
   }
 
-  .promise-row.reverse {
-    grid-template-columns: 1.08fr 0.92fr;
+  .promise-card__number {
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    line-height: 1;
+    color: rgba(125, 173, 200, 0.34);
   }
 
-  .promise-row.reverse .promise-row__visual {
-    order: 2;
+  .promise-card__badge {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2rem;
+    padding: 0.45rem 0.75rem;
+    border-radius: 999px;
+    background: rgba(125, 173, 200, 0.12);
+    color: var(--color-primary-dark);
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
   }
 
-  .promise-row__copy {
+  .promise-card h3 {
+    font-size: 1.32rem;
+    line-height: 1.35;
+  }
+
+  .promise-card p {
+    color: var(--color-text-soft);
+  }
+
+  .promise-card__points {
+    display: grid;
+    gap: 0.5rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .promise-card__points li {
     position: relative;
-    padding-left: 4rem;
+    padding-left: 1.1rem;
+    color: var(--color-heading);
+    font-size: 0.9rem;
+    font-weight: 600;
   }
 
-  .promise-row__number {
+  .promise-card__points li::before {
+    content: "";
     position: absolute;
     left: 0;
-    top: -0.1rem;
-    font-family: var(--font-display);
-    font-size: clamp(4rem, 8vw, 7rem);
-    line-height: 0.85;
-    color: rgba(125, 173, 200, 0.18);
-  }
-
-  .promise-row__copy h3 {
-    margin: 0.4rem 0 0.8rem;
-    font-size: clamp(1.55rem, 2.8vw, 2.2rem);
-    line-height: 1.25;
-  }
-
-  .promise-row__copy p:last-child {
-    color: var(--color-text-soft);
+    top: 0.72rem;
+    width: 0.42rem;
+    height: 0.42rem;
+    border-radius: 999px;
+    background: var(--color-accent);
   }
 
   .promise-summary {
@@ -740,6 +883,89 @@ const faqPreview = [
   .promise-summary__item p {
     color: var(--color-text-soft);
     font-size: 0.9rem;
+  }
+
+  .reasons-section {
+    background:
+      linear-gradient(180deg, rgba(241, 247, 251, 0.9), rgba(255, 255, 255, 0.96));
+  }
+
+  .reasons-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+    margin-top: 1.9rem;
+  }
+
+  .reason-card {
+    display: grid;
+    gap: 0.9rem;
+    min-height: 100%;
+  }
+
+  .reason-card__header {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+
+  .reason-card__icon {
+    width: 3rem;
+    height: 3rem;
+    display: inline-grid;
+    place-items: center;
+    border-radius: 999px;
+    background: rgba(125, 173, 200, 0.12);
+    color: var(--color-primary-dark);
+  }
+
+  .reason-card__label {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2rem;
+    padding: 0.42rem 0.72rem;
+    border-radius: 999px;
+    background: rgba(219, 139, 87, 0.12);
+    color: var(--color-accent);
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+  }
+
+  .reason-card h3 {
+    font-size: 1.24rem;
+    line-height: 1.4;
+  }
+
+  .reason-card p {
+    color: var(--color-text-soft);
+  }
+
+  .reason-card__points {
+    display: grid;
+    gap: 0.48rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .reason-card__points li {
+    position: relative;
+    padding-left: 1.1rem;
+    color: var(--color-heading);
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+
+  .reason-card__points li::before {
+    content: "";
+    position: absolute;
+    top: 0.72rem;
+    left: 0;
+    width: 0.42rem;
+    height: 0.42rem;
+    border-radius: 999px;
+    background: var(--color-primary);
   }
 
   .first-step__inner,
@@ -1046,15 +1272,26 @@ const faqPreview = [
     background: rgba(123, 128, 96, 0.16);
   }
 
-  :global(html[data-theme="warm"]) .hero-photo--main {
-    border-radius: 2.8rem;
-    transform: rotate(-3deg);
+  :global(html[data-theme="warm"]) .home-hero__promise {
+    color: var(--color-accent);
   }
 
-  :global(html[data-theme="warm"]) .hero-photo--card {
-    border-radius: 2rem;
-    transform: rotate(2deg);
-    background: linear-gradient(180deg, rgba(255, 250, 244, 0.96), rgba(255, 242, 229, 0.96));
+  :global(html[data-theme="warm"]) .home-hero__microcopy span {
+    background: rgba(255, 247, 239, 0.94);
+    border-color: rgba(211, 159, 116, 0.2);
+  }
+
+  :global(html[data-theme="warm"]) .home-hero__microcopy span:nth-child(odd) {
+    rotate: -1.4deg;
+  }
+
+  :global(html[data-theme="warm"]) .home-hero__microcopy span:nth-child(even) {
+    rotate: 1.2deg;
+  }
+
+  :global(html[data-theme="warm"]) .home-hero__notice {
+    background: linear-gradient(180deg, rgba(255, 251, 245, 0.96), rgba(255, 240, 223, 0.96));
+    border-radius: 2.2rem;
   }
 
   :global(html[data-theme="warm"]) .home-hero__visual {
@@ -1089,15 +1326,35 @@ const faqPreview = [
     background: linear-gradient(180deg, rgba(255, 247, 239, 0.98), rgba(255, 252, 247, 0.98));
   }
 
+  :global(html[data-theme="warm"]) .promise-card {
+    border-color: rgba(211, 159, 116, 0.18);
+    border-radius: 2.6rem;
+    background: linear-gradient(180deg, rgba(255, 251, 245, 0.96), rgba(255, 241, 228, 0.96));
+  }
+
+  :global(html[data-theme="warm"]) .promise-card:nth-child(2) {
+    margin-top: 1.4rem;
+  }
+
+  :global(html[data-theme="warm"]) .promise-card:nth-child(3) {
+    margin-top: 0.6rem;
+  }
+
+  :global(html[data-theme="warm"]) .promise-card__badge {
+    background: rgba(229, 138, 82, 0.14);
+    color: var(--color-accent);
+  }
+
   :global(html[data-theme="warm"]) .promise-summary__icon,
+  :global(html[data-theme="warm"]) .reason-card__icon,
   :global(html[data-theme="warm"]) .symptoms-overview__icon,
   :global(html[data-theme="warm"]) .services-overview__icon {
     background: rgba(229, 138, 82, 0.14);
     color: var(--color-accent);
   }
 
-  :global(html[data-theme="warm"]) .promise-row__number {
-    color: rgba(229, 138, 82, 0.18);
+  :global(html[data-theme="warm"]) .promise-card__number {
+    color: rgba(229, 138, 82, 0.28);
   }
 
   :global(html[data-theme="warm"]) .symptoms-overview {
@@ -1116,6 +1373,29 @@ const faqPreview = [
 
   :global(html[data-theme="warm"]) .symptoms-overview__card:nth-child(even) {
     rotate: 1.2deg;
+  }
+
+  :global(html[data-theme="warm"]) .reasons-section {
+    background:
+      linear-gradient(180deg, rgba(255, 242, 228, 0.98), rgba(255, 250, 244, 0.98));
+  }
+
+  :global(html[data-theme="warm"]) .reason-card {
+    border-radius: 2.25rem;
+    background: linear-gradient(180deg, rgba(255, 250, 244, 0.96), rgba(255, 242, 229, 0.96));
+  }
+
+  :global(html[data-theme="warm"]) .reason-card:nth-child(odd) {
+    rotate: -1.2deg;
+  }
+
+  :global(html[data-theme="warm"]) .reason-card:nth-child(even) {
+    rotate: 1deg;
+  }
+
+  :global(html[data-theme="warm"]) .reason-card__label {
+    background: rgba(123, 128, 96, 0.14);
+    color: var(--color-primary-dark);
   }
 
   :global(html[data-theme="warm"]) .services-overview__item {
@@ -1157,6 +1437,8 @@ const faqPreview = [
   }
 
   @media (max-width: 1080px) {
+    .promise-cards,
+    .reasons-grid,
     .services-overview__grid {
       grid-template-columns: repeat(3, minmax(0, 1fr));
     }
@@ -1183,15 +1465,8 @@ const faqPreview = [
       margin: 0 auto;
     }
 
-    .promise-row,
-    .promise-row.reverse {
-      grid-template-columns: 1fr;
-    }
-
-    .promise-row.reverse .promise-row__visual {
-      order: 0;
-    }
-
+    .promise-cards,
+    .reasons-grid,
     .promise-summary {
       grid-template-columns: 1fr;
     }
@@ -1228,19 +1503,15 @@ const faqPreview = [
     }
 
     .symptoms-overview__grid,
+    .reasons-grid,
+    .promise-cards,
     .services-overview__grid {
       grid-template-columns: 1fr;
     }
 
-    .promise-row__copy {
-      padding-left: 0;
-      padding-top: 3.5rem;
-    }
-
-    .promise-row__number {
-      left: 0;
-      top: 0;
-      font-size: 4.2rem;
+    .home-hero__microcopy {
+      flex-direction: column;
+      align-items: stretch;
     }
 
     .access-preview__list {
