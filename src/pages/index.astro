@@ -668,6 +668,9 @@ const faqPreview = [
     position: absolute;
     border-radius: 50%;
     filter: blur(2px);
+    translate: 0 0;
+    animation: orb-float 12s ease-in-out infinite;
+    will-change: translate, scale;
   }
 
   .hero-orb--one {
@@ -684,6 +687,8 @@ const faqPreview = [
     width: 8.5rem;
     height: 8.5rem;
     background: rgba(219, 139, 87, 0.12);
+    animation-duration: 15s;
+    animation-direction: reverse;
   }
 
   .home-hero__spark {
@@ -772,6 +777,20 @@ const faqPreview = [
     border-radius: 2rem;
     background: rgba(255, 255, 255, 0.94);
     box-shadow: var(--shadow-soft);
+    translate: 0 0;
+    will-change: translate, scale;
+  }
+
+  .promise-card:nth-child(1) {
+    animation: card-float-a 7.8s ease-in-out infinite;
+  }
+
+  .promise-card:nth-child(2) {
+    animation: card-float-b 8.7s ease-in-out infinite 0.45s;
+  }
+
+  .promise-card:nth-child(3) {
+    animation: card-float-c 7.2s ease-in-out infinite 0.85s;
   }
 
   .promise-card__media img {
@@ -901,6 +920,20 @@ const faqPreview = [
     display: grid;
     gap: 0.9rem;
     min-height: 100%;
+    translate: 0 0;
+    will-change: translate, scale;
+  }
+
+  .reason-card:nth-child(1) {
+    animation: card-float-b 8.8s ease-in-out infinite 0.2s;
+  }
+
+  .reason-card:nth-child(2) {
+    animation: card-float-c 7.6s ease-in-out infinite 0.55s;
+  }
+
+  .reason-card:nth-child(3) {
+    animation: card-float-a 8.2s ease-in-out infinite 0.95s;
   }
 
   .reason-card__header {
@@ -1030,6 +1063,16 @@ const faqPreview = [
     background: rgba(255,255,255,0.9);
     border: 1px solid rgba(125, 173, 200, 0.15);
     box-shadow: 0 18px 36px rgba(27, 53, 82, 0.07);
+    translate: 0 0;
+    will-change: translate, scale;
+  }
+
+  .symptoms-overview__card:nth-child(odd) {
+    animation: icon-card-float 8.4s ease-in-out infinite;
+  }
+
+  .symptoms-overview__card:nth-child(even) {
+    animation: icon-card-float 9.1s ease-in-out infinite 0.6s;
   }
 
   .symptoms-overview__icon,
@@ -1065,6 +1108,20 @@ const faqPreview = [
     border: 1px solid rgba(125, 173, 200, 0.14);
     background: rgba(255,255,255,0.92);
     box-shadow: 0 16px 30px rgba(27, 53, 82, 0.06);
+    translate: 0 0;
+    will-change: translate, scale;
+  }
+
+  .services-overview__item:nth-child(3n + 1) {
+    animation: icon-card-float 8.7s ease-in-out infinite;
+  }
+
+  .services-overview__item:nth-child(3n + 2) {
+    animation: icon-card-float 9.4s ease-in-out infinite 0.45s;
+  }
+
+  .services-overview__item:nth-child(3n + 3) {
+    animation: icon-card-float 8s ease-in-out infinite 0.9s;
   }
 
   .services-overview__item h3 {
@@ -1102,6 +1159,8 @@ const faqPreview = [
     position: absolute;
     overflow: hidden;
     box-shadow: var(--shadow-float);
+    translate: 0 0;
+    will-change: translate, scale;
   }
 
   .doctor-highlight__portrait img,
@@ -1122,6 +1181,7 @@ const faqPreview = [
     bottom: 0;
     height: 38%;
     border-radius: 1.7rem;
+    animation: photo-float 9.8s ease-in-out infinite 0.45s;
   }
 
   .doctor-highlight__visual img {
@@ -1129,6 +1189,10 @@ const faqPreview = [
     height: 100%;
     object-fit: cover;
     filter: saturate(0.94) brightness(1.08) sepia(0.12) hue-rotate(-8deg);
+  }
+
+  .doctor-highlight__portrait {
+    animation: photo-float 11s ease-in-out infinite;
   }
 
   .clinic-preview__grid {
@@ -1142,17 +1206,107 @@ const faqPreview = [
     overflow: hidden;
     border-radius: 2rem;
     box-shadow: var(--shadow-soft);
+    translate: 0 0;
+    will-change: translate, scale;
   }
 
   .clinic-preview__photo--large {
     grid-row: span 2;
     min-height: 100%;
+    animation: photo-float 10.5s ease-in-out infinite;
+  }
+
+  .clinic-preview__photo:not(.clinic-preview__photo--large):first-of-type {
+    animation: photo-float 9s ease-in-out infinite 0.45s;
+  }
+
+  .clinic-preview__photo:last-of-type {
+    animation: photo-float 11s ease-in-out infinite 0.95s;
   }
 
   .clinic-preview__photo img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+  }
+
+  .promise-card:hover,
+  .reason-card:hover,
+  .symptoms-overview__card:hover,
+  .services-overview__item:hover,
+  .doctor-highlight__portrait:hover,
+  .doctor-highlight__support:hover,
+  .clinic-preview__photo:hover {
+    scale: 1.015;
+    box-shadow: var(--shadow-card-hover);
+  }
+
+  @keyframes orb-float {
+    0%,
+    100% {
+      translate: 0 0;
+      scale: 1;
+    }
+
+    50% {
+      translate: 0 -0.9rem;
+      scale: 1.04;
+    }
+  }
+
+  @keyframes card-float-a {
+    0%,
+    100% {
+      translate: 0 0;
+    }
+
+    50% {
+      translate: 0 -0.55rem;
+    }
+  }
+
+  @keyframes card-float-b {
+    0%,
+    100% {
+      translate: 0 0;
+    }
+
+    50% {
+      translate: 0.18rem -0.7rem;
+    }
+  }
+
+  @keyframes card-float-c {
+    0%,
+    100% {
+      translate: 0 0;
+    }
+
+    50% {
+      translate: -0.16rem -0.5rem;
+    }
+  }
+
+  @keyframes icon-card-float {
+    0%,
+    100% {
+      translate: 0 0;
+    }
+
+    50% {
+      translate: 0 -0.42rem;
+    }
+  }
+
+  @keyframes photo-float {
+    0%,
+    100% {
+      translate: 0 0;
+    }
+
+    50% {
+      translate: 0 -0.65rem;
+    }
   }
 
   .clinic-preview__link,
@@ -1434,6 +1588,21 @@ const faqPreview = [
 
   :global(html[data-theme="warm"]) .clinic-preview__photo:last-of-type {
     rotate: -1.2deg;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-orb,
+    .promise-card,
+    .reason-card,
+    .symptoms-overview__card,
+    .services-overview__item,
+    .doctor-highlight__portrait,
+    .doctor-highlight__support,
+    .clinic-preview__photo {
+      animation: none !important;
+      translate: 0 0 !important;
+      scale: 1 !important;
+    }
   }
 
   @media (max-width: 1080px) {
