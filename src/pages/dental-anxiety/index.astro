@@ -1,0 +1,323 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import PageHero from "../../components/PageHero.astro";
+import Breadcrumb from "../../components/Breadcrumb.astro";
+import SectionCTA from "../../components/SectionCTA.astro";
+import { SITE } from "../../data/site";
+---
+
+<BaseLayout
+  title="歯医者が怖い方へ"
+  description="歯医者が怖い・久しぶりで不安な方へ。湘南桑田歯科では無理に治療を進めません。まずはお話から始めます。"
+>
+  <PageHero title="歯医者が怖い方へ" subtitle="怖いと感じるのは、あなただけではありません" image="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=1400&q=80" />
+
+  <div class="container-narrow section-padding">
+    <Breadcrumb items={[{ label: "初めての方へ", href: "/first-visit/" }, { label: "歯医者が怖い方へ" }]} />
+
+    <!-- ========== 共感セクション ========== -->
+    <section class="empathy-section">
+      <h2 class="section-heading">こんなお気持ちはありませんか？</h2>
+      <ul class="empathy-list">
+        <li>歯医者が怖い。子どもの頃から苦手</li>
+        <li>痛いことをされそうで不安</li>
+        <li>怒られたり、責められたりしないか心配</li>
+        <li>久しぶりすぎて、今さら行きづらい</li>
+        <li>口の中を見せるのが恥ずかしい</li>
+        <li>治療の音やにおいが苦手</li>
+        <li>以前、嫌な経験をして足が遠のいてしまった</li>
+      </ul>
+      <p class="empathy-message">
+        どれかひとつでも当てはまる方へ。<br />
+        そのお気持ちは、とても自然なことです。歯医者が怖いと感じる方は、想像以上に多くいらっしゃいます。
+      </p>
+    </section>
+
+    <!-- ========== 当院の対応 ========== -->
+    <section class="approach-section">
+      <h2 class="section-heading">当院でお約束していること</h2>
+      <p class="section-intro">怖い気持ちを持ったまま来てくださって構いません。当院では、患者さんが安心できるまで治療を急ぎません。</p>
+
+      <div class="approach-grid">
+        <div class="approach-card card">
+          <div class="approach-icon">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+              <circle cx="24" cy="24" r="20" fill="var(--color-primary-light)" stroke="var(--color-primary)" stroke-width="2"/>
+              <path d="M16 24l6 6 10-10" stroke="var(--color-primary)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3>痛みへの配慮</h3>
+          <p>表面麻酔でチクッとする感覚を軽減し、極細の注射針を使用しています。治療中に痛みを感じたら、すぐに中断します。我慢しなくて大丈夫です。</p>
+        </div>
+        <div class="approach-card card">
+          <div class="approach-icon">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+              <circle cx="24" cy="24" r="20" fill="var(--color-primary-light)" stroke="var(--color-primary)" stroke-width="2"/>
+              <path d="M18 20c0-1.1.9-2 2-2h8c1.1 0 2 .9 2 2v4a6 6 0 01-12 0v-4z" stroke="var(--color-primary)" stroke-width="2"/>
+              <circle cx="21" cy="22" r="1" fill="var(--color-primary)"/>
+              <circle cx="27" cy="22" r="1" fill="var(--color-primary)"/>
+            </svg>
+          </div>
+          <h3>カウンセリング重視</h3>
+          <p>まずはお話を聞くことから始めます。今の不安、過去の経験、苦手なこと。何でも教えてください。治療の前に、信頼関係を築くことを大切にしています。</p>
+        </div>
+        <div class="approach-card card">
+          <div class="approach-icon">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+              <circle cx="24" cy="24" r="20" fill="var(--color-primary-light)" stroke="var(--color-primary)" stroke-width="2"/>
+              <path d="M16 28l4-8h8l4 8" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M20 28v4M28 28v4" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3>説明してから治療</h3>
+          <p>何をするか分からないまま治療を始めることはしません。これからどんな治療をするのか、なぜ必要なのかを丁寧にご説明し、ご納得いただいてから進めます。</p>
+        </div>
+        <div class="approach-card card">
+          <div class="approach-icon">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+              <circle cx="24" cy="24" r="20" fill="var(--color-primary-light)" stroke="var(--color-primary)" stroke-width="2"/>
+              <path d="M14 28V20a2 2 0 014 0v4" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round"/>
+              <path d="M18 20V16a2 2 0 014 0v8" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round"/>
+              <path d="M22 18V14a2 2 0 014 0v10" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round"/>
+              <path d="M26 20V18a2 2 0 014 0v6" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3>いつでも中断OK</h3>
+          <p>治療中でも、怖くなったり辛くなったりしたら手を挙げてください。すぐに止めます。無理をさせることは絶対にしません。患者さんのペースで進めます。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== 三原則の再掲 ========== -->
+    <section class="promises-recap bg-alt">
+      <h2 class="section-heading">当院の3つの約束</h2>
+      <div class="promises-row">
+        <div class="promise-mini">
+          <strong>必要以上に削らない</strong>
+          <p>歯はできるだけ残す方針です</p>
+        </div>
+        <div class="promise-mini">
+          <strong>患者さんを責めない</strong>
+          <p>どんな状態でもお迎えします</p>
+        </div>
+        <div class="promise-mini">
+          <strong>無理に治療を進めない</strong>
+          <p>納得してから治療を始めます</p>
+        </div>
+      </div>
+      <div class="promises-link">
+        <a href="/philosophy/" class="btn-secondary">私たちの考えを詳しく見る</a>
+      </div>
+    </section>
+
+    <!-- ========== まず何をすればいいですか？ ========== -->
+    <section class="first-step-section">
+      <h2 class="section-heading">まず何をすればいいですか？</h2>
+      <p class="section-intro">怖い気持ちがあっても大丈夫。一歩ずつ、ゆっくり進めましょう。</p>
+
+      <div class="first-steps">
+        <div class="first-step">
+          <span class="first-step-num">1</span>
+          <div>
+            <h3>ご予約ください</h3>
+            <p>WEB・LINE・お電話のどれでも構いません。「歯医者が怖い」「久しぶりで不安」と伝えていただければ、配慮してお迎えする準備をします。</p>
+          </div>
+        </div>
+        <div class="first-step">
+          <span class="first-step-num">2</span>
+          <div>
+            <h3>まずはお話から</h3>
+            <p>初回はカウンセリングが中心です。今の不安や、過去の嫌な経験を聞かせてください。無理に口を開ける必要もありません。</p>
+          </div>
+        </div>
+        <div class="first-step">
+          <span class="first-step-num">3</span>
+          <div>
+            <h3>一緒に相談します</h3>
+            <p>どんな治療が必要なのか、どう進めるのか、一緒に考えましょう。選択肢をお伝えしますので、ご自身で選んでいただけます。</p>
+          </div>
+        </div>
+        <div class="first-step">
+          <span class="first-step-num">4</span>
+          <div>
+            <h3>治療は急ぎません</h3>
+            <p>すぐに治療を始める必要はありません。心の準備ができてからで大丈夫です。何回かお話だけで通っていただいても構いません。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <SectionCTA
+    heading="まずはお話しするだけでも大丈夫です"
+    text="治療するかどうかは、来てから一緒に考えましょう。ご予約は WEB・LINE・お電話から承っています。"
+  />
+</BaseLayout>
+
+<style>
+  /* ---------- SECTION HEADINGS ---------- */
+  .section-heading {
+    font-size: 1.5rem;
+    text-align: center;
+    margin-bottom: 0.75rem;
+    color: var(--color-text-heading);
+  }
+  .section-intro {
+    text-align: center;
+    color: var(--color-text-light);
+    max-width: 600px;
+    margin: 0 auto 2.5rem;
+    line-height: 1.8;
+  }
+
+  /* ---------- EMPATHY ---------- */
+  .empathy-section {
+    margin-bottom: 4rem;
+  }
+  .empathy-list {
+    list-style: none;
+    padding: 0;
+    max-width: 600px;
+    margin: 2rem auto;
+  }
+  .empathy-list li {
+    padding: 0.75rem 0 0.75rem 2rem;
+    position: relative;
+    font-size: 1rem;
+    color: var(--color-text);
+    border-bottom: 1px solid var(--color-border);
+  }
+  .empathy-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--color-primary);
+  }
+  .empathy-message {
+    text-align: center;
+    max-width: 600px;
+    margin: 2rem auto 0;
+    font-size: 1.05rem;
+    line-height: 1.9;
+    color: var(--color-text);
+  }
+
+  /* ---------- APPROACH ---------- */
+  .approach-section {
+    margin-bottom: 4rem;
+  }
+  .approach-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+  .approach-card {
+    padding: 2rem;
+    text-align: center;
+  }
+  .approach-icon {
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: center;
+  }
+  .approach-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.75rem;
+    color: var(--color-text-heading);
+  }
+  .approach-card p {
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+    line-height: 1.8;
+  }
+
+  @media (max-width: 640px) {
+    .approach-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* ---------- PROMISES RECAP ---------- */
+  .promises-recap {
+    border-radius: var(--radius-md, 8px);
+    padding: 3rem 2rem;
+    margin-bottom: 4rem;
+    text-align: center;
+  }
+  .promises-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin: 2rem 0;
+  }
+  .promise-mini strong {
+    display: block;
+    font-size: 1rem;
+    color: var(--color-primary);
+    margin-bottom: 0.3rem;
+  }
+  .promise-mini p {
+    font-size: 0.85rem;
+    color: var(--color-text-light);
+  }
+  .promises-link {
+    margin-top: 1.5rem;
+  }
+
+  @media (max-width: 640px) {
+    .promises-row {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+    .promises-recap {
+      padding: 2rem 1rem;
+    }
+  }
+
+  /* ---------- FIRST STEPS ---------- */
+  .first-step-section {
+    margin-bottom: 2rem;
+  }
+  .first-steps {
+    max-width: 650px;
+    margin: 0 auto;
+  }
+  .first-step {
+    display: flex;
+    gap: 1.25rem;
+    align-items: flex-start;
+    padding: 1.25rem 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .first-step:last-child {
+    border-bottom: none;
+  }
+  .first-step-num {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--color-primary);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    font-weight: 700;
+  }
+  .first-step h3 {
+    font-size: 1.05rem;
+    margin-bottom: 0.3rem;
+    color: var(--color-text-heading);
+  }
+  .first-step p {
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+    line-height: 1.8;
+  }
+</style>

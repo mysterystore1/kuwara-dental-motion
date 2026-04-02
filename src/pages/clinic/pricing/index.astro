@@ -1,0 +1,266 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import PageHero from "../../../components/PageHero.astro";
+import Breadcrumb from "../../../components/Breadcrumb.astro";
+import SectionCTA from "../../../components/SectionCTA.astro";
+import { SITE } from "../../../data/site";
+---
+
+<BaseLayout title="料金表" description="湘南桑田歯科の料金表。保険診療と自費診療の費用目安をご案内します。">
+  <PageHero title="料金表" />
+
+  <div class="container-narrow">
+    <Breadcrumb items={[{ label: "医院案内" }, { label: "料金表" }]} />
+  </div>
+
+  <!-- ========== 保険診療 ========== -->
+  <section class="insurance section-padding">
+    <div class="container-narrow">
+      <h2 class="section-title">保険診療について</h2>
+      <div class="insurance-box card">
+        <p>
+          一般的な虫歯治療・歯周病治療・抜歯・入れ歯などは、健康保険が適用されます。
+          保険診療の場合、窓口でのお支払いは原則として<strong>3割負担</strong>（年齢等により異なります）となります。
+        </p>
+        <p>
+          治療内容によって費用は異なりますので、事前にお見積もりをお伝えすることも可能です。
+          ご不明な点はお気軽にスタッフまでお尋ねください。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 自費診療 料金表 ========== -->
+  <section class="self-pay section-padding bg-alt">
+    <div class="container-narrow">
+      <h2 class="section-title">自費診療 料金表</h2>
+      <p class="section-lead">保険適用外の治療についての費用目安です（税込）</p>
+
+      <!-- ホワイトニング -->
+      <h3 class="table-category">ホワイトニング</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>メニュー</th>
+              <th>料金（税込）</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>オフィスホワイトニング（1回）</td>
+              <td>22,000円～</td>
+            </tr>
+            <tr>
+              <td>ホームホワイトニング（上下セット）</td>
+              <td>33,000円～</td>
+            </tr>
+            <tr>
+              <td>デュアルホワイトニング</td>
+              <td>49,500円～</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="table-note">※効果には個人差があります。知覚過敏が一時的に生じることがあります。詳しくはお問い合わせください。</p>
+
+      <!-- 審美歯科 -->
+      <h3 class="table-category">審美歯科（かぶせもの・詰めもの）</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>メニュー</th>
+              <th>料金（税込）</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>オールセラミッククラウン</td>
+              <td>88,000円～</td>
+            </tr>
+            <tr>
+              <td>ジルコニアクラウン</td>
+              <td>110,000円～</td>
+            </tr>
+            <tr>
+              <td>セラミックインレー</td>
+              <td>44,000円～</td>
+            </tr>
+            <tr>
+              <td>ラミネートベニア</td>
+              <td>77,000円～</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="table-note">※リスク・副作用として、まれに欠けや破損が生じることがあります。詳しくはお問い合わせください。</p>
+
+      <!-- インプラント -->
+      <h3 class="table-category">インプラント</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>メニュー</th>
+              <th>料金（税込）</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>インプラント（1本）</td>
+              <td>330,000円～</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="table-note">※外科手術を伴います。骨の状態等により適応できない場合があります。詳しくはお問い合わせください。</p>
+
+      <!-- その他 -->
+      <h3 class="table-category">その他</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>メニュー</th>
+              <th>料金（税込）</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>マウスピース矯正（部分）</td>
+              <td>330,000円～</td>
+            </tr>
+            <tr>
+              <td>ノンクラスプデンチャー</td>
+              <td>110,000円～</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="table-note">※リスク・副作用あり。治療期間・費用は個人差があります。詳しくはお問い合わせください。</p>
+    </div>
+  </section>
+
+  <!-- ========== お支払い方法 ========== -->
+  <section class="payment section-padding">
+    <div class="container-narrow">
+      <h2 class="section-title">お支払い方法</h2>
+      <div class="payment-grid">
+        <div class="payment-card card">
+          <h3>現金</h3>
+          <p>窓口にてお支払いください。</p>
+        </div>
+        <div class="payment-card card">
+          <h3>クレジットカード</h3>
+          <p>各種クレジットカードをご利用いただけます（自費診療のみ）。</p>
+        </div>
+        <div class="payment-card card">
+          <h3>デンタルローン</h3>
+          <p>高額な自費診療には、分割払いのデンタルローンもご利用いただけます。お気軽にご相談ください。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <SectionCTA />
+</BaseLayout>
+
+<style>
+  /* ---------- Section Titles ---------- */
+  .section-title {
+    font-size: 1.75rem;
+    text-align: center;
+    margin-bottom: 0.5rem;
+  }
+  .section-lead {
+    text-align: center;
+    color: var(--color-text-light);
+    margin-bottom: 2.5rem;
+  }
+
+  /* ---------- Insurance ---------- */
+  .insurance-box {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .insurance-box p {
+    line-height: 1.9;
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+  }
+  .insurance-box p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* ---------- Pricing Tables ---------- */
+  .table-category {
+    font-size: 1.2rem;
+    color: var(--color-primary);
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--color-primary-light);
+  }
+  .table-category:first-of-type {
+    margin-top: 0;
+  }
+  .table-wrap {
+    overflow-x: auto;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+  }
+  thead {
+    background: var(--color-primary-light);
+  }
+  th {
+    text-align: left;
+    padding: 0.75rem 1rem;
+    font-weight: 600;
+    color: var(--color-text-heading);
+  }
+  td {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+  td:last-child {
+    font-weight: 600;
+    white-space: nowrap;
+    color: var(--color-text-heading);
+  }
+  .table-note {
+    font-size: 0.8rem;
+    color: var(--color-text-light);
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  /* ---------- Payment ---------- */
+  .payment-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+  .payment-card {
+    text-align: center;
+  }
+  .payment-card h3 {
+    font-size: 1.1rem;
+    color: var(--color-primary);
+    margin-bottom: 0.5rem;
+  }
+  .payment-card p {
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+    line-height: 1.7;
+  }
+
+  @media (max-width: 640px) {
+    .payment-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

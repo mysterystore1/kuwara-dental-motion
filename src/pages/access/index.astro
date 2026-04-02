@@ -1,0 +1,308 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import PageHero from "../../components/PageHero.astro";
+import Breadcrumb from "../../components/Breadcrumb.astro";
+import SectionCTA from "../../components/SectionCTA.astro";
+import { SITE } from "../../data/site";
+---
+
+<BaseLayout title="アクセス" description="湘南桑田歯科へのアクセス。JR藤沢駅南口より徒歩3分。住所・診療時間・地図をご案内します。">
+  <PageHero title="アクセス" subtitle={SITE.address.station} />
+
+  <div class="container-narrow">
+    <Breadcrumb items={[{ label: "アクセス" }]} />
+  </div>
+
+  <!-- ========== 医院情報 ========== -->
+  <section class="clinic-info section-padding">
+    <div class="container-narrow info-grid">
+      <div class="info-table-wrap">
+        <h2 class="section-title-left">医院情報</h2>
+        <dl class="info-dl">
+          <dt>医院名</dt>
+          <dd>{SITE.name}</dd>
+          <dt>住所</dt>
+          <dd>{SITE.address.full}</dd>
+          <dt>電話番号</dt>
+          <dd><a href={SITE.phoneHref}>{SITE.phone}</a></dd>
+          <dt>最寄駅</dt>
+          <dd>{SITE.address.station}</dd>
+        </dl>
+
+        <h3 class="hours-heading">診療時間</h3>
+        <div class="hours-table-wrap">
+          <table class="hours-table">
+            <thead>
+              <tr>
+                <th></th>
+                <th>月</th>
+                <th>火</th>
+                <th>水</th>
+                <th>木</th>
+                <th>金</th>
+                <th>土</th>
+                <th>日・祝</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="time-label">9:30 - 13:00</td>
+                <td>○</td>
+                <td>○</td>
+                <td>○</td>
+                <td>-</td>
+                <td>○</td>
+                <td>○</td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td class="time-label">14:30 - 19:00</td>
+                <td>○</td>
+                <td>○</td>
+                <td>○</td>
+                <td>-</td>
+                <td>○</td>
+                <td>△</td>
+                <td>-</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="hours-note">△ 土曜午後は 14:30 - 17:00</p>
+        <p class="hours-note">休診日: {SITE.hours.closed}</p>
+      </div>
+
+      <!-- Google Maps プレースホルダー -->
+      <div class="map-area">
+        <div class="map-placeholder">
+          <p>Google Maps<br />（後で埋め込み）</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 道順案内 ========== -->
+  <section class="directions section-padding bg-alt">
+    <div class="container-narrow">
+      <h2 class="section-title">道順のご案内</h2>
+      <p class="section-lead">JR藤沢駅南口からの道順をご案内します</p>
+
+      <div class="steps-grid">
+        <div class="step-item">
+          <span class="step-num">1</span>
+          <div>
+            <h3>JR藤沢駅南口を出る</h3>
+            <p>改札を出て南口方面へ進んでください。ロータリーが見えます。</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <span class="step-num">2</span>
+          <div>
+            <h3>右に進む</h3>
+            <p>ロータリーを右手に見ながら、大通り沿いに歩きます。コンビニが目印です。</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <span class="step-num">3</span>
+          <div>
+            <h3>1つ目の信号を直進</h3>
+            <p>横断歩道を渡り、そのまままっすぐ進みます。</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <span class="step-num">4</span>
+          <div>
+            <h3>左手に○○ビルが見えます</h3>
+            <p>○○ビルの2Fが当院です。1Fに看板がございますので、そちらからお入りください。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 駐車場情報 ========== -->
+  <section class="parking section-padding">
+    <div class="container-narrow">
+      <h2 class="section-title">駐車場のご案内</h2>
+      <div class="parking-box card">
+        <p>
+          当院には専用駐車場のご用意がございませんが、近隣に提携コインパーキングがございます。
+          お車でお越しの際は、以下のパーキングをご利用ください。
+        </p>
+        <div class="parking-info">
+          <h3>○○パーキング（提携）</h3>
+          <p>当院ビルより徒歩1分。診療時間に応じてサービス券をお渡ししております。受付にてお申し付けください。</p>
+        </div>
+        <p class="parking-note">
+          ※公共交通機関でのご来院もおすすめしています。JR藤沢駅から徒歩3分と大変便利な立地です。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <SectionCTA />
+</BaseLayout>
+
+<style>
+  /* ---------- Section Titles ---------- */
+  .section-title {
+    font-size: 1.75rem;
+    text-align: center;
+    margin-bottom: 0.5rem;
+  }
+  .section-title-left {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  .section-lead {
+    text-align: center;
+    color: var(--color-text-light);
+    margin-bottom: 2.5rem;
+  }
+
+  /* ---------- Info Grid ---------- */
+  .info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+  .info-dl {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.6rem 1.5rem;
+    font-size: 0.95rem;
+    margin-bottom: 2rem;
+  }
+  .info-dl dt {
+    font-weight: 600;
+    color: var(--color-text-heading);
+  }
+
+  /* ---------- Hours Table ---------- */
+  .hours-heading {
+    font-size: 1.1rem;
+    margin-bottom: 0.75rem;
+    color: var(--color-text-heading);
+  }
+  .hours-table-wrap {
+    overflow-x: auto;
+  }
+  .hours-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+    text-align: center;
+  }
+  .hours-table th {
+    background: var(--color-primary-light);
+    padding: 0.5rem 0.4rem;
+    font-weight: 600;
+    color: var(--color-text-heading);
+  }
+  .hours-table td {
+    padding: 0.5rem 0.4rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .hours-table .time-label {
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.8rem;
+    white-space: nowrap;
+  }
+  .hours-note {
+    font-size: 0.8rem;
+    color: var(--color-text-light);
+    margin-top: 0.4rem;
+  }
+
+  /* ---------- Map ---------- */
+  .map-placeholder {
+    background: var(--color-bg-alt);
+    border: 2px dashed var(--color-border);
+    border-radius: var(--radius-md);
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--color-text-light);
+    font-size: 1.1rem;
+  }
+
+  @media (max-width: 768px) {
+    .info-grid {
+      grid-template-columns: 1fr;
+    }
+    .map-placeholder {
+      min-height: 300px;
+    }
+  }
+
+  /* ---------- Directions ---------- */
+  .steps-grid {
+    max-width: 700px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .step-item {
+    display: flex;
+    gap: 1.25rem;
+    align-items: flex-start;
+  }
+  .step-num {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--color-primary);
+    color: #fff;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+  }
+  .step-item h3 {
+    font-size: 1.05rem;
+    margin-bottom: 0.25rem;
+  }
+  .step-item p {
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+    line-height: 1.7;
+  }
+
+  /* ---------- Parking ---------- */
+  .parking-box {
+    max-width: 720px;
+    margin: 1rem auto 0;
+  }
+  .parking-box > p {
+    line-height: 1.8;
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+  }
+  .parking-info {
+    background: var(--color-bg-alt);
+    border-radius: var(--radius-sm);
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+  }
+  .parking-info h3 {
+    font-size: 1rem;
+    color: var(--color-primary);
+    margin-bottom: 0.5rem;
+  }
+  .parking-info p {
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+    line-height: 1.7;
+  }
+  .parking-note {
+    font-size: 0.85rem;
+    color: var(--color-text-light);
+  }
+</style>

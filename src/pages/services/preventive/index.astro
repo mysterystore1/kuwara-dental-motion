@@ -1,0 +1,252 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import PageHero from "../../../components/PageHero.astro";
+import Breadcrumb from "../../../components/Breadcrumb.astro";
+import SectionCTA from "../../../components/SectionCTA.astro";
+---
+
+<BaseLayout
+  title="予防歯科"
+  description="定期検診とクリーニングで虫歯・歯周病を予防。湘南桑田歯科の予防歯科プログラム。"
+>
+  <PageHero
+    title="予防歯科"
+    subtitle="定期的なケアで、健康な歯を長く保ちましょう"
+    image="https://images.unsplash.com/photo-1629909615184-74f495363b67?w=1400&q=80"
+  />
+
+  <div class="container-narrow">
+    <Breadcrumb items={[
+      { label: "診療案内", href: "/services/" },
+      { label: "予防歯科" },
+    ]} />
+  </div>
+
+  <!-- 予防が大切な理由 -->
+  <section class="section-padding">
+    <div class="container-narrow">
+      <h2 class="section-title">予防が大切な理由</h2>
+      <div class="reason-block">
+        <p>虫歯や歯周病は、一度なってしまうと元の状態に完全に戻すことは難しい病気です。治療を繰り返すほど歯への負担が増え、将来的に歯を失うリスクが高まることもあります。</p>
+        <p>「痛くなってから行く」のではなく、「痛くならないために通う」。それが予防歯科の考え方です。定期的なケアを続けることで、お口のトラブルを早期に発見し、大がかりな治療を避けることにつながります。</p>
+      </div>
+      <div class="merit-grid">
+        <div class="merit-card card">
+          <h3>早期発見</h3>
+          <p>定期検診で虫歯や歯周病を早い段階で見つけることができます。早めの対応で治療も簡単になる傾向があります。</p>
+        </div>
+        <div class="merit-card card">
+          <h3>治療費の軽減</h3>
+          <p>予防にかかる費用は、進行してからの治療費に比べて少なく済むことが一般的です。</p>
+        </div>
+        <div class="merit-card card">
+          <h3>お口の健康維持</h3>
+          <p>プロフェッショナルケアと毎日のセルフケアを組み合わせることで、健康な状態を長く維持することが期待できます。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 当院の予防プログラム -->
+  <section class="section-padding bg-alt">
+    <div class="container-narrow">
+      <h2 class="section-title">当院の予防プログラム</h2>
+      <p class="section-lead">患者さんに合わせた予防ケアをご提案します</p>
+
+      <div class="program-list">
+        <div class="program-item">
+          <div class="program-icon">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+              <rect x="8" y="8" width="32" height="32" rx="6" fill="var(--color-primary-light)" stroke="var(--color-primary)" stroke-width="2"/>
+              <path d="M16 24l5 5 11-11" stroke="var(--color-primary)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="program-content">
+            <h3>定期検診</h3>
+            <p>お口全体の状態を確認し、虫歯や歯周病の兆候がないかチェックします。レントゲン撮影や歯周ポケットの測定なども行い、変化を見逃さないようにしています。</p>
+          </div>
+        </div>
+
+        <div class="program-item">
+          <div class="program-icon">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+              <circle cx="24" cy="24" r="16" fill="var(--color-primary-light)" stroke="var(--color-primary)" stroke-width="2"/>
+              <path d="M24 16v8l5 5" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="program-content">
+            <h3>プロフェッショナルクリーニング（PMTC）</h3>
+            <p>歯科衛生士が専用の器具を使い、ご自身のブラッシングでは落としきれない歯石やバイオフィルムを除去します。歯の表面がツルツルになり、汚れが付きにくくなる効果も期待できます。</p>
+          </div>
+        </div>
+
+        <div class="program-item">
+          <div class="program-icon">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+              <path d="M14 34V18a2 2 0 012-2h16a2 2 0 012 2v16" stroke="var(--color-primary)" stroke-width="2" fill="var(--color-primary-light)"/>
+              <path d="M10 34h28" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round"/>
+              <path d="M20 22h8M24 22v8" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="program-content">
+            <h3>ブラッシング指導</h3>
+            <p>患者さんのお口の状態に合わせた、効果的な歯磨きの方法をお伝えします。歯ブラシの選び方や、フロス・歯間ブラシの使い方もアドバイスいたします。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 通う頻度の目安 -->
+  <section class="section-padding">
+    <div class="container-narrow">
+      <h2 class="section-title">通う頻度の目安</h2>
+      <div class="frequency-block">
+        <div class="frequency-card card">
+          <h3>3〜6か月に1回</h3>
+          <p>一般的な目安として、3〜6か月に1回の定期検診をおすすめしています。お口の状態によって最適な間隔は異なりますので、担当の歯科衛生士がご提案いたします。</p>
+        </div>
+        <div class="frequency-info">
+          <h3>こんな方には短い間隔をおすすめすることがあります</h3>
+          <ul>
+            <li>歯周病の治療を受けたことがある方</li>
+            <li>虫歯になりやすい方</li>
+            <li>喫煙習慣のある方</li>
+            <li>糖尿病などの全身疾患がある方</li>
+          </ul>
+          <p class="frequency-note">※ お口の状態は個人差がありますので、最適な間隔は診察時にご相談ください。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <SectionCTA />
+</BaseLayout>
+
+<style>
+  .section-title {
+    font-size: 1.75rem;
+    text-align: center;
+    margin-bottom: 0.5rem;
+  }
+  .section-lead {
+    text-align: center;
+    color: var(--color-text-light);
+    margin-bottom: 2.5rem;
+  }
+
+  /* Reason block */
+  .reason-block {
+    max-width: 700px;
+    margin: 0 auto 2.5rem;
+    text-align: center;
+  }
+  .reason-block p {
+    line-height: 1.8;
+    margin-bottom: 1rem;
+  }
+
+  /* Merit grid */
+  .merit-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+  .merit-card {
+    text-align: center;
+    padding: 2rem 1.5rem;
+  }
+  .merit-card h3 {
+    font-size: 1.1rem;
+    color: var(--color-primary);
+    margin-bottom: 0.75rem;
+  }
+  .merit-card p {
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+    line-height: 1.8;
+  }
+
+  /* Program list */
+  .program-list {
+    max-width: 750px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+  .program-item {
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+  }
+  .program-icon {
+    flex-shrink: 0;
+  }
+  .program-content h3 {
+    font-size: 1.15rem;
+    margin-bottom: 0.5rem;
+  }
+  .program-content p {
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+    line-height: 1.8;
+  }
+
+  /* Frequency */
+  .frequency-block {
+    max-width: 750px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: start;
+  }
+  .frequency-card {
+    text-align: center;
+    padding: 2.5rem 2rem;
+    background: var(--color-primary-light);
+    border-color: var(--color-primary);
+  }
+  .frequency-card h3 {
+    font-size: 1.5rem;
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+  }
+  .frequency-card p {
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+    line-height: 1.8;
+  }
+  .frequency-info h3 {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+  .frequency-info ul {
+    padding-left: 1.25rem;
+    margin-bottom: 1rem;
+  }
+  .frequency-info li {
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+    padding: 0.25rem 0;
+  }
+  .frequency-note {
+    font-size: 0.85rem;
+    color: var(--color-text-light);
+  }
+
+  @media (max-width: 768px) {
+    .merit-grid {
+      grid-template-columns: 1fr;
+    }
+    .program-item {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    .frequency-block {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

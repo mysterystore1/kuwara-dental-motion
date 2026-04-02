@@ -1,0 +1,37 @@
+---
+interface Props {
+  title: string;
+  subtitle?: string;
+  image?: string;
+}
+const { title, subtitle, image } = Astro.props;
+---
+
+<section class="page-hero" style={image ? `background-image:linear-gradient(rgba(0,0,0,0.35),rgba(0,0,0,0.35)),url(${image})` : undefined}>
+  <div class="container-narrow">
+    <h1 class="page-hero-title">{title}</h1>
+    {subtitle && <p class="page-hero-sub">{subtitle}</p>}
+  </div>
+</section>
+
+<style>
+  .page-hero {
+    background-color: var(--color-primary);
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+    padding: 4rem 1.5rem;
+    text-align: center;
+  }
+  .page-hero-title {
+    font-size: 2rem;
+    color: #fff;
+    margin-bottom: 0.5rem;
+  }
+  .page-hero-sub {
+    font-size: 1rem;
+    opacity: 0.9;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+</style>

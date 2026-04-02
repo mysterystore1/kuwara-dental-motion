@@ -1,0 +1,539 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SectionCTA from "../components/SectionCTA.astro";
+import { SITE, THREE_PROMISES } from "../data/site";
+---
+
+<BaseLayout>
+  <!-- ========== HERO ========== -->
+  <section class="hero">
+    <div class="hero-bg">
+      <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=1400&q=80" alt="明るい歯科医院の待合室" loading="eager" />
+    </div>
+    <div class="hero-content container-narrow">
+      <p class="hero-lead">湘南エリアで安心して通える歯医者</p>
+      <h1 class="hero-title">「怖い」を<br class="sp-only" />我慢しなくていい<br />歯科医院</h1>
+      <p class="hero-sub">
+        歯医者が久しぶりの方も、怖いと感じている方も大丈夫。<br />
+        まずはお話を聞くところから始めます。
+      </p>
+      <div class="hero-buttons">
+        <a href="/reserve/" class="btn-primary">ご予約・ご相談はこちら</a>
+        <a href="/first-visit/" class="btn-secondary" style="border-color:#fff;color:#fff;">初めての方へ</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== THREE PROMISES ========== -->
+  <section class="promises section-padding">
+    <div class="container-narrow">
+      <h2 class="section-title">3つの約束</h2>
+      <p class="section-lead">当院が大切にしていること</p>
+      <div class="promises-grid">
+        {THREE_PROMISES.map((p) => (
+          <div class="promise-card card">
+            <div class="promise-icon">
+              {p.icon === "shield" && (
+                <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                  <path d="M24 4L6 12v10c0 11.1 7.7 21.5 18 24 10.3-2.5 18-12.9 18-24V12L24 4z" fill="var(--color-primary-light)" stroke="var(--color-primary)" stroke-width="2"/>
+                  <path d="M18 24l4 4 8-8" stroke="var(--color-primary)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              )}
+              {p.icon === "heart" && (
+                <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                  <path d="M24 42s-16-9.5-16-21c0-5.5 4.5-10 10-10 3.5 0 5.5 2 6 3 .5-1 2.5-3 6-3 5.5 0 10 4.5 10 10 0 11.5-16 21-16 21z" fill="var(--color-primary-light)" stroke="var(--color-primary)" stroke-width="2"/>
+                </svg>
+              )}
+              {p.icon === "hand" && (
+                <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                  <path d="M14 28V16a2 2 0 014 0v8" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round"/>
+                  <path d="M18 18V12a2 2 0 014 0v12" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round"/>
+                  <path d="M22 14V10a2 2 0 014 0v14" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round"/>
+                  <path d="M26 16V14a2 2 0 014 0v10" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round"/>
+                  <path d="M14 28c0 8 4 14 12 14s12-6 12-14" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" fill="var(--color-primary-light)"/>
+                </svg>
+              )}
+            </div>
+            <h3 class="promise-title">{p.title}</h3>
+            <p class="promise-desc">{p.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FIRST VISIT ========== -->
+  <section class="first-visit section-padding bg-alt">
+    <div class="container-narrow first-visit-inner">
+      <div class="first-visit-text">
+        <h2 class="section-title" style="text-align:left;">初めての方へ</h2>
+        <p>当院では、初めてご来院いただく方にも安心していただけるよう、まずはカウンセリングからスタートします。いきなり治療を始めることはありません。</p>
+        <p>久しぶりの歯医者で不安な方、以前嫌な経験をされた方も、遠慮なくお気持ちをお聞かせください。</p>
+        <div style="margin-top:1.5rem;display:flex;gap:1rem;flex-wrap:wrap;">
+          <a href="/first-visit/" class="btn-primary">詳しく見る</a>
+          <a href="/dental-anxiety/" class="btn-secondary">歯医者が怖い方へ</a>
+        </div>
+      </div>
+      <div class="first-visit-image">
+        <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=600&q=80" alt="カウンセリングの様子" loading="lazy" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SYMPTOMS ========== -->
+  <section class="symptoms section-padding">
+    <div class="container-narrow">
+      <h2 class="section-title">症状から探す</h2>
+      <p class="section-lead">気になる症状はありますか？</p>
+      <div class="symptom-grid">
+        <a href="/symptoms/toothache/" class="symptom-card">
+          <div class="symptom-img">
+            <img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=400&q=80" alt="歯が痛い" loading="lazy" />
+          </div>
+          <div class="symptom-body">
+            <span class="symptom-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round"><path d="M12 2a5 5 0 015 5c0 2-1 3.5-2 5s-2 4-2 6h-2c0-2-1-4.5-2-6s-2-3-2-5a5 5 0 015-5z"/><line x1="10" y1="18" x2="14" y2="18"/><line x1="10" y1="21" x2="14" y2="21"/></svg>
+            </span>
+            <h3 class="symptom-label">歯が痛い</h3>
+            <p class="symptom-desc">噛むと痛い、何もしなくてもズキズキする方</p>
+          </div>
+        </a>
+        <a href="/symptoms/sensitivity/" class="symptom-card">
+          <div class="symptom-img">
+            <img src="https://images.unsplash.com/photo-1598256989800-fe5f95da9787?w=400&q=80" alt="歯がしみる" loading="lazy" />
+          </div>
+          <div class="symptom-body">
+            <span class="symptom-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round"><path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"/><circle cx="12" cy="12" r="3"/></svg>
+            </span>
+            <h3 class="symptom-label">歯がしみる</h3>
+            <p class="symptom-desc">冷たいもの・甘いものでキーンとする方</p>
+          </div>
+        </a>
+        <a href="/symptoms/swollen-gums/" class="symptom-card">
+          <div class="symptom-img">
+            <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=400&q=80" alt="歯茎が腫れた" loading="lazy" />
+          </div>
+          <div class="symptom-body">
+            <span class="symptom-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 000-7.78z"/></svg>
+            </span>
+            <h3 class="symptom-label">歯茎が腫れた</h3>
+            <p class="symptom-desc">歯茎の腫れや出血が気になる方</p>
+          </div>
+        </a>
+        <a href="/symptoms/lost-filling/" class="symptom-card">
+          <div class="symptom-img">
+            <img src="https://images.unsplash.com/photo-1629909615184-74f495363b67?w=400&q=80" alt="詰め物が取れた" loading="lazy" />
+          </div>
+          <div class="symptom-body">
+            <span class="symptom-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+            </span>
+            <h3 class="symptom-label">詰め物が取れた</h3>
+            <p class="symptom-desc">詰め物・被せ物が外れてしまった方</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SERVICES ========== -->
+  <section class="services section-padding bg-section">
+    <div class="container-narrow">
+      <h2 class="section-title">診療案内</h2>
+      <p class="section-lead">幅広い診療に対応しています</p>
+      <div class="services-grid">
+        <a href="/services/cavity/" class="service-card card">
+          <h3>虫歯治療</h3>
+          <p>できるだけ削らない・痛みの少ない治療を心がけています。</p>
+        </a>
+        <a href="/services/periodontal/" class="service-card card">
+          <h3>歯周病治療</h3>
+          <p>歯を支える歯茎と骨の健康を守る、丁寧な治療を行います。</p>
+        </a>
+        <a href="/services/preventive/" class="service-card card">
+          <h3>予防歯科</h3>
+          <p>定期的なケアで虫歯・歯周病を防ぎ、健康な歯を長く保ちます。</p>
+        </a>
+        <a href="/services/pediatric/" class="service-card card">
+          <h3>小児歯科</h3>
+          <p>お子さまのペースに合わせた、やさしい治療を提供します。</p>
+        </a>
+        <a href="/services/whitening/" class="service-card card">
+          <h3>ホワイトニング</h3>
+          <p>自然な白さで、笑顔に自信を持てるようサポートします。</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== WHY CHOOSE US ========== -->
+  <section class="reasons section-padding">
+    <div class="container-narrow">
+      <h2 class="section-title">当院が選ばれる理由</h2>
+      <div class="reasons-grid">
+        <div class="reason-item">
+          <span class="reason-num">01</span>
+          <h3>丁寧な説明</h3>
+          <p>治療前に必ず現在の状態と治療方針をご説明します。分からないことは何でもお聞きください。</p>
+        </div>
+        <div class="reason-item">
+          <span class="reason-num">02</span>
+          <h3>痛みへの配慮</h3>
+          <p>表面麻酔や極細の注射針を使用し、治療中の痛みを最小限に抑える工夫をしています。</p>
+        </div>
+        <div class="reason-item">
+          <span class="reason-num">03</span>
+          <h3>駅から近い</h3>
+          <p>{SITE.address.station}。お仕事帰りやお買い物のついでにも通いやすい立地です。</p>
+        </div>
+        <div class="reason-item">
+          <span class="reason-num">04</span>
+          <h3>家族で通える</h3>
+          <p>小さなお子さまからご年配の方まで、ご家族みなさまでご来院いただけます。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== DOCTOR MESSAGE ========== -->
+  <section class="doctor section-padding bg-alt">
+    <div class="container-narrow doctor-inner">
+      <div class="doctor-image">
+        <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=500&q=80" alt="院長の写真" loading="lazy" />
+      </div>
+      <div class="doctor-text">
+        <h2 class="section-title" style="text-align:left;">院長メッセージ</h2>
+        <p>はじめまして。{SITE.name}院長の桑田（仮名）です。</p>
+        <p>「歯医者は怖い場所」というイメージを、少しでも変えたいと思っています。患者さんのお話をしっかり聞き、一緒に治療計画を考える。そんな当たり前のことを、丁寧に続けていきたいと思います。</p>
+        <p>久しぶりの歯医者で緊張されている方も、どうぞ安心してお越しください。</p>
+        <a href="/clinic/doctor/" class="btn-secondary" style="margin-top:1rem;">院長紹介を見る</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CLINIC PHOTOS ========== -->
+  <section class="clinic-photos section-padding">
+    <div class="container-narrow">
+      <h2 class="section-title">院内紹介</h2>
+      <p class="section-lead">明るく清潔な空間でお待ちしています</p>
+      <div class="photos-grid">
+        <img src="https://images.unsplash.com/photo-1629909615184-74f495363b67?w=500&q=80" alt="受付" loading="lazy" />
+        <img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=500&q=80" alt="診療室" loading="lazy" />
+        <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=500&q=80" alt="待合室" loading="lazy" />
+      </div>
+      <div style="text-align:center;margin-top:2rem;">
+        <a href="/clinic/facility/" class="btn-secondary">もっと見る</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FAQ ========== -->
+  <section class="faq-preview section-padding bg-section">
+    <div class="container-narrow">
+      <h2 class="section-title">よくあるご質問</h2>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>初めての来院ですが、何を持っていけばいいですか？</summary>
+          <p>保険証をお持ちください。お薬手帳がある方はそちらもお願いします。問診票は院内でご記入いただけます。</p>
+        </details>
+        <details class="faq-item">
+          <summary>歯医者が怖いのですが、大丈夫ですか？</summary>
+          <p>大丈夫です。当院では無理に治療を始めることはありません。まずはお話を聞かせていただき、患者さんのペースに合わせて進めます。</p>
+        </details>
+        <details class="faq-item">
+          <summary>痛みが少ない治療はできますか？</summary>
+          <p>はい。表面麻酔や極細の注射針を使用し、痛みを最小限に抑える工夫をしています。治療中に痛みがあれば、遠慮なくお伝えください。</p>
+        </details>
+      </div>
+      <div style="text-align:center;margin-top:2rem;">
+        <a href="/faq/" class="btn-secondary">FAQ をもっと見る</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== ACCESS ========== -->
+  <section class="access-preview section-padding">
+    <div class="container-narrow access-inner">
+      <div class="access-info">
+        <h2 class="section-title" style="text-align:left;">アクセス</h2>
+        <dl class="access-dl">
+          <dt>住所</dt><dd>{SITE.address.full}</dd>
+          <dt>最寄駅</dt><dd>{SITE.address.station}</dd>
+          <dt>電話</dt><dd><a href={SITE.phoneHref}>{SITE.phone}</a></dd>
+          <dt>診療時間</dt>
+          <dd>
+            月火水金 {SITE.hours.weekday}<br />
+            土 {SITE.hours.saturday}
+          </dd>
+          <dt>休診</dt><dd>{SITE.hours.closed}</dd>
+        </dl>
+        <a href="/access/" class="btn-secondary" style="margin-top:1rem;">詳しいアクセス</a>
+      </div>
+      <div class="access-map">
+        <div class="map-placeholder">
+          <p>Google Maps<br />（後で埋め込み）</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FINAL CTA ========== -->
+  <SectionCTA />
+</BaseLayout>
+
+<style>
+  /* ---------- HERO ---------- */
+  .hero {
+    position: relative;
+    min-height: 520px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+  }
+  .hero-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.45);
+  }
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    color: #fff;
+    padding: 4rem 1.5rem;
+  }
+  .hero-lead {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.5rem;
+  }
+  .hero-title {
+    font-size: 2.5rem;
+    color: #fff;
+    line-height: 1.3;
+    margin-bottom: 1rem;
+  }
+  .hero-sub {
+    font-size: 1.05rem;
+    opacity: 0.9;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+  }
+  .hero-buttons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .sp-only { display: none; }
+
+  @media (max-width: 640px) {
+    .hero { min-height: 420px; }
+    .hero-title { font-size: 1.75rem; }
+    .sp-only { display: inline; }
+  }
+
+  /* ---------- SECTION TITLES ---------- */
+  .section-title {
+    font-size: 1.75rem;
+    text-align: center;
+    margin-bottom: 0.5rem;
+  }
+  .section-lead {
+    text-align: center;
+    color: var(--color-text-light);
+    margin-bottom: 2.5rem;
+  }
+
+  /* ---------- PROMISES ---------- */
+  .promises-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+  .promise-card { text-align: center; padding: 2.5rem 1.5rem; }
+  .promise-icon { margin-bottom: 1rem; display: flex; justify-content: center; }
+  .promise-title { font-size: 1.15rem; margin-bottom: 0.75rem; }
+  .promise-desc { font-size: 0.9rem; color: var(--color-text-light); }
+  @media (max-width: 640px) {
+    .promises-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ---------- FIRST VISIT ---------- */
+  .first-visit-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+  .first-visit-image img { border-radius: var(--radius-md); }
+  @media (max-width: 768px) {
+    .first-visit-inner { grid-template-columns: 1fr; }
+  }
+
+  /* ---------- SYMPTOMS ---------- */
+  .symptom-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.25rem;
+  }
+  .symptom-card {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    box-shadow: var(--shadow-card);
+    transition: box-shadow 0.2s, transform 0.15s;
+  }
+  .symptom-card:hover {
+    box-shadow: var(--shadow-card-hover);
+    transform: translateY(-3px);
+  }
+  .symptom-img {
+    height: 140px;
+    overflow: hidden;
+  }
+  .symptom-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s;
+  }
+  .symptom-card:hover .symptom-img img {
+    transform: scale(1.05);
+  }
+  .symptom-body {
+    padding: 1.25rem;
+    text-align: center;
+  }
+  .symptom-icon {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 0.5rem;
+  }
+  .symptom-label {
+    font-weight: 700;
+    color: var(--color-text-heading);
+    font-size: 1.05rem;
+    margin-bottom: 0.35rem;
+  }
+  .symptom-desc {
+    font-size: 0.8rem;
+    color: var(--color-text-light);
+    line-height: 1.5;
+  }
+  @media (max-width: 768px) {
+    .symptom-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 480px) {
+    .symptom-grid { grid-template-columns: 1fr; max-width: 320px; margin: 0 auto; }
+  }
+
+  /* ---------- SERVICES ---------- */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
+  .service-card { text-decoration: none; color: var(--color-text); }
+  .service-card h3 { font-size: 1.1rem; margin-bottom: 0.5rem; color: var(--color-primary); }
+  .service-card p { font-size: 0.9rem; color: var(--color-text-light); }
+  @media (max-width: 768px) {
+    .services-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ---------- REASONS ---------- */
+  .reasons-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+  .reason-item { padding: 1.5rem 0; border-bottom: 1px solid var(--color-border); }
+  .reason-num { font-size: 2rem; font-weight: 700; color: var(--color-primary); opacity: 0.3; line-height: 1; }
+  .reason-item h3 { font-size: 1.1rem; margin: 0.5rem 0; }
+  .reason-item p { font-size: 0.9rem; color: var(--color-text-light); }
+  @media (max-width: 640px) {
+    .reasons-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ---------- DOCTOR ---------- */
+  .doctor-inner {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+  .doctor-image img {
+    border-radius: var(--radius-md);
+    aspect-ratio: 3/4;
+    object-fit: cover;
+  }
+  @media (max-width: 768px) {
+    .doctor-inner { grid-template-columns: 1fr; }
+    .doctor-image { max-width: 280px; }
+  }
+
+  /* ---------- CLINIC PHOTOS ---------- */
+  .photos-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+  .photos-grid img {
+    border-radius: var(--radius-md);
+    aspect-ratio: 4/3;
+    object-fit: cover;
+  }
+  @media (max-width: 640px) {
+    .photos-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ---------- FAQ ---------- */
+  .faq-list { max-width: 700px; margin: 0 auto; }
+  .faq-item { border-bottom: 1px solid var(--color-border); padding: 1.25rem 0; }
+  .faq-item summary {
+    font-weight: 600;
+    cursor: pointer;
+    padding: 0.25rem 0;
+    list-style: none;
+  }
+  .faq-item summary::before { content: "Q. "; color: var(--color-primary); font-weight: 700; }
+  .faq-item p { margin-top: 0.75rem; padding-left: 1.5rem; font-size: 0.9rem; color: var(--color-text-light); }
+
+  /* ---------- ACCESS ---------- */
+  .access-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+  .access-dl {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.5rem 1.5rem;
+    font-size: 0.95rem;
+  }
+  .access-dl dt { font-weight: 600; color: var(--color-text-heading); }
+  .map-placeholder {
+    background: var(--color-bg-alt);
+    border: 2px dashed var(--color-border);
+    border-radius: var(--radius-md);
+    min-height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--color-text-light);
+  }
+  @media (max-width: 768px) {
+    .access-inner { grid-template-columns: 1fr; }
+  }
+</style>

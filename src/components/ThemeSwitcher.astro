@@ -1,0 +1,31 @@
+---
+---
+
+<div class="theme-switcher">
+  <button data-theme-btn="default" class="active">A: モダン</button>
+  <button data-theme-btn="warm">B: ナチュラル</button>
+</div>
+
+<script>
+  const buttons = document.querySelectorAll("[data-theme-btn]");
+  const saved = localStorage.getItem("dental-theme");
+  if (saved === "warm") {
+    document.documentElement.setAttribute("data-theme", "warm");
+    buttons.forEach((b) =>
+      b.classList.toggle("active", (b as HTMLElement).dataset.themeBtn === "warm")
+    );
+  }
+
+  buttons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const theme = (btn as HTMLElement).dataset.themeBtn!;
+      if (theme === "warm") {
+        document.documentElement.setAttribute("data-theme", "warm");
+      } else {
+        document.documentElement.removeAttribute("data-theme");
+      }
+      localStorage.setItem("dental-theme", theme);
+      buttons.forEach((b) => b.classList.toggle("active", b === btn));
+    });
+  });
+</script>

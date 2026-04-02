@@ -1,0 +1,172 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import PageHero from "../../../components/PageHero.astro";
+import Breadcrumb from "../../../components/Breadcrumb.astro";
+import SectionCTA from "../../../components/SectionCTA.astro";
+import { SITE } from "../../../data/site";
+---
+
+<BaseLayout title="院長紹介" description="湘南桑田歯科の院長紹介。経歴・資格・治療への想いをご紹介します。">
+  <PageHero title="院長紹介" />
+
+  <div class="container-narrow">
+    <Breadcrumb items={[{ label: "医院案内" }, { label: "院長紹介" }]} />
+  </div>
+
+  <!-- ========== プロフィール ========== -->
+  <section class="doctor-profile section-padding">
+    <div class="container-narrow profile-grid">
+      <div class="profile-image">
+        <img
+          src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=600&q=80"
+          alt="院長の写真"
+          loading="lazy"
+        />
+      </div>
+      <div class="profile-info">
+        <p class="profile-label">院長</p>
+        <h2 class="profile-name">桑田 ○○<span class="profile-name-kana">（くわた ○○）</span></h2>
+
+        <dl class="profile-dl">
+          <dt>経歴</dt>
+          <dd>
+            <ul class="career-list">
+              <li>○○大学歯学部 卒業</li>
+              <li>○○大学附属病院 歯科研修医</li>
+              <li>○○病院 歯科勤務</li>
+              <li>{SITE.name} 開業</li>
+            </ul>
+          </dd>
+          <dt>資格</dt>
+          <dd>歯科医師</dd>
+          <dt>所属学会</dt>
+          <dd>日本歯科保存学会 / 日本歯周病学会</dd>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 院長メッセージ ========== -->
+  <section class="doctor-message section-padding bg-alt">
+    <div class="container-narrow message-inner">
+      <h2 class="section-title">院長メッセージ</h2>
+
+      <div class="message-body">
+        <p>
+          はじめまして。{SITE.name}院長の桑田です。
+          当院のページをご覧いただき、ありがとうございます。
+        </p>
+        <p>
+          私が歯科医師を志したのは、「歯医者は怖い場所」というイメージを変えたいと思ったからです。
+          子どもの頃、歯医者が怖くて泣いていた自分自身の経験が、今の診療スタイルの原点になっています。
+        </p>
+        <p>
+          治療の前に、まずお話を聞くこと。
+          今のお口の状態をわかりやすくお伝えすること。
+          そして、患者さんが納得されてから治療を始めること。
+          このあたりまえのことを、ひとつひとつ丁寧に積み重ねていきたいと考えています。
+        </p>
+        <p>
+          「怖い場所」を「安心できる場所」に変えていくために、
+          スタッフ一同、やさしい対応と丁寧な治療を心がけてまいります。
+        </p>
+        <p>
+          久しぶりの歯医者で緊張されている方も、どうぞ安心してお越しください。
+          まずはお気軽にご相談いただければうれしいです。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <SectionCTA />
+</BaseLayout>
+
+<style>
+  /* ---------- Profile ---------- */
+  .profile-grid {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+  .profile-image img {
+    border-radius: var(--radius-md);
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    width: 100%;
+  }
+  .profile-label {
+    font-size: 0.85rem;
+    color: var(--color-primary);
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+  }
+  .profile-name {
+    font-size: 1.75rem;
+    margin-bottom: 1.5rem;
+  }
+  .profile-name-kana {
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: var(--color-text-light);
+    margin-left: 0.5rem;
+  }
+  .profile-dl {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.75rem 1.5rem;
+    font-size: 0.95rem;
+  }
+  .profile-dl dt {
+    font-weight: 600;
+    color: var(--color-text-heading);
+  }
+  .career-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .career-list li {
+    padding: 0.2rem 0;
+    padding-left: 1.2rem;
+    position: relative;
+  }
+  .career-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.7rem;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--color-primary);
+  }
+
+  @media (max-width: 768px) {
+    .profile-grid {
+      grid-template-columns: 1fr;
+    }
+    .profile-image {
+      max-width: 280px;
+    }
+  }
+
+  /* ---------- Message ---------- */
+  .section-title {
+    font-size: 1.75rem;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  .message-body {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .message-body p {
+    margin-bottom: 1.25rem;
+    line-height: 2;
+    font-size: 0.95rem;
+  }
+  .message-body p:last-child {
+    margin-bottom: 0;
+  }
+</style>

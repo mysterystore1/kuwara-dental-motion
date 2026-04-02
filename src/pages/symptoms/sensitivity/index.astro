@@ -1,0 +1,221 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import PageHero from "../../../components/PageHero.astro";
+import Breadcrumb from "../../../components/Breadcrumb.astro";
+import SectionCTA from "../../../components/SectionCTA.astro";
+import { SITE } from "../../../data/site";
+---
+
+<BaseLayout
+  title="歯がしみる"
+  description="歯がしみる症状でお悩みの方へ。知覚過敏や虫歯など、原因を特定して適切に対応します。"
+>
+  <PageHero
+    title="歯がしみる"
+    subtitle="原因を特定し、適切な対応をご提案します"
+    image="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=1400&q=80"
+  />
+
+  <div class="container-narrow">
+    <Breadcrumb items={[{ label: "症状から探す" }, { label: "歯がしみる" }]} />
+  </div>
+
+  <!-- こんな症状はありませんか？ -->
+  <section class="section-padding">
+    <div class="container-narrow">
+      <h2 class="section-title">こんな症状はありませんか？</h2>
+      <ul class="symptom-list">
+        <li>冷たい水や飲み物でキーンとしみる</li>
+        <li>甘いものを食べるとしみる</li>
+        <li>歯ブラシが当たるとピリッと痛む</li>
+        <li>風が当たるとしみる感じがする</li>
+        <li>以前はしみなかったのに最近しみるようになった</li>
+      </ul>
+      <p class="note">
+        「しみる」という症状は、知覚過敏だけでなく虫歯や歯周病のサインであることもあります。気になる場合は、早めに原因を確認しておくと安心です。
+      </p>
+    </div>
+  </section>
+
+  <!-- 考えられる原因 -->
+  <section class="section-padding bg-soft">
+    <div class="container-narrow">
+      <h2 class="section-title">考えられる原因</h2>
+      <div class="cause-grid">
+        <div class="cause-card card">
+          <h3>知覚過敏</h3>
+          <p>歯の表面のエナメル質が摩耗したり、歯茎が下がることで、歯の内側にある象牙質が露出し、刺激が神経に伝わりやすくなった状態です。</p>
+        </div>
+        <div class="cause-card card">
+          <h3>虫歯</h3>
+          <p>虫歯が進行して歯の内部に達すると、冷たいものや甘いものでしみるようになることがあります。</p>
+        </div>
+        <div class="cause-card card">
+          <h3>歯周病による歯茎下がり</h3>
+          <p>歯周病が進行すると歯茎が下がり、本来歯茎に覆われていた歯の根元が露出して、しみやすくなることがあります。</p>
+        </div>
+        <div class="cause-card card">
+          <h3>歯ぎしり・食いしばり</h3>
+          <p>無意識の歯ぎしりや食いしばりにより、歯の表面が削れたり、微細なひびが入ることでしみる原因になることがあります。</p>
+        </div>
+      </div>
+      <p class="note">
+        上記は一般的な例です。症状の程度や組み合わせによって原因は異なりますので、検査で確認することが大切です。
+      </p>
+    </div>
+  </section>
+
+  <!-- 当院での対応 -->
+  <section class="section-padding">
+    <div class="container-narrow">
+      <h2 class="section-title">当院での対応</h2>
+      <div class="flow-steps">
+        <div class="flow-step">
+          <span class="flow-number">1</span>
+          <div>
+            <h3>症状を丁寧にお伺いします</h3>
+            <p>いつから、どんな刺激で、どの歯がしみるかを詳しくお聞きし、症状を正確に把握します。</p>
+          </div>
+        </div>
+        <div class="flow-step">
+          <span class="flow-number">2</span>
+          <div>
+            <h3>検査で原因を見極めます</h3>
+            <p>虫歯や歯周病がないかなど、視診やレントゲンで確認します。知覚過敏が疑われる場合は、専用の検査も行います。</p>
+          </div>
+        </div>
+        <div class="flow-step">
+          <span class="flow-number">3</span>
+          <div>
+            <h3>原因に合わせた処置を行います</h3>
+            <p>知覚過敏であれば薬剤の塗布やコーティング、虫歯であれば状態に応じた治療など、原因に合わせて対応します。日常のケア方法もアドバイスいたします。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 関連ページ -->
+  <section class="section-padding bg-soft">
+    <div class="container-narrow">
+      <h2 class="section-title">関連する診療案内</h2>
+      <div class="related-links">
+        <a href="/services/cavity/" class="related-link card">
+          <span class="related-label">虫歯治療</span>
+          <span class="related-arrow">&rarr;</span>
+        </a>
+        <a href="/services/periodontal/" class="related-link card">
+          <span class="related-label">歯周病治療</span>
+          <span class="related-arrow">&rarr;</span>
+        </a>
+        <a href="/services/preventive/" class="related-link card">
+          <span class="related-label">予防歯科</span>
+          <span class="related-arrow">&rarr;</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <SectionCTA />
+</BaseLayout>
+
+<style>
+  .symptom-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+  .symptom-list li {
+    padding: 1rem 1.25rem;
+    background: var(--color-bg-soft);
+    border-radius: var(--radius);
+    border-left: 4px solid var(--color-primary);
+    font-weight: 500;
+  }
+  .note {
+    color: var(--color-text-light);
+    font-size: 0.9rem;
+    line-height: 1.8;
+  }
+  .cause-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  .cause-card {
+    padding: 1.5rem;
+  }
+  .cause-card h3 {
+    font-size: 1.1rem;
+    color: var(--color-primary);
+    margin-bottom: 0.5rem;
+  }
+  .cause-card p {
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: var(--color-text);
+  }
+  .flow-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+  .flow-step {
+    display: flex;
+    gap: 1.25rem;
+    align-items: flex-start;
+  }
+  .flow-number {
+    flex-shrink: 0;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    background: var(--color-primary);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.1rem;
+  }
+  .flow-step h3 {
+    font-size: 1.05rem;
+    margin-bottom: 0.4rem;
+  }
+  .flow-step p {
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: var(--color-text);
+  }
+  .related-links {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+  }
+  .related-link {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 1.5rem;
+    text-decoration: none;
+    color: var(--color-text);
+    transition: box-shadow 0.2s ease;
+  }
+  .related-link:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  }
+  .related-label {
+    font-weight: 600;
+  }
+  .related-arrow {
+    color: var(--color-primary);
+    font-size: 1.2rem;
+  }
+  .bg-soft {
+    background: var(--color-bg-soft);
+  }
+</style>

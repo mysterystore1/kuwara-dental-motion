@@ -1,0 +1,262 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import PageHero from "../../../components/PageHero.astro";
+import Breadcrumb from "../../../components/Breadcrumb.astro";
+import SectionCTA from "../../../components/SectionCTA.astro";
+import { SITE } from "../../../data/site";
+---
+
+<BaseLayout
+  title="詰め物が取れた"
+  description="詰め物・被せ物が取れた方へ。できるだけ早めの受診をおすすめします。湘南桑田歯科で対応いたします。"
+>
+  <PageHero
+    title="詰め物が取れた"
+    subtitle="お早めの受診をおすすめします"
+    image="https://images.unsplash.com/photo-1609840114035-3c981b782dfe?w=1400&q=80"
+  />
+
+  <div class="container-narrow">
+    <Breadcrumb items={[{ label: "症状から探す" }, { label: "詰め物が取れた" }]} />
+  </div>
+
+  <!-- 応急処置のアドバイス -->
+  <section class="section-padding">
+    <div class="container-narrow">
+      <h2 class="section-title">取れてしまったときの応急処置</h2>
+      <div class="advice-box">
+        <ul class="advice-list">
+          <li>
+            <strong>取れた詰め物は捨てずに保管してください</strong>
+            <p>状態が良ければそのまま戻せる場合があります。小さな容器やラップに包んでお持ちください。</p>
+          </li>
+          <li>
+            <strong>自分で接着剤で戻さないでください</strong>
+            <p>市販の接着剤を使うと、歯や詰め物を傷めてしまうことがあります。</p>
+          </li>
+          <li>
+            <strong>取れた側でなるべく噛まないようにしてください</strong>
+            <p>詰め物が取れた歯はもろくなっていることがあります。硬いものは反対側で噛むようにしましょう。</p>
+          </li>
+          <li>
+            <strong>できるだけ早めにご来院ください</strong>
+            <p>放置すると虫歯が進行したり、歯が欠けるリスクが高まることがあります。</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 考えられる原因 -->
+  <section class="section-padding bg-soft">
+    <div class="container-narrow">
+      <h2 class="section-title">詰め物が取れる原因</h2>
+      <div class="cause-grid">
+        <div class="cause-card card">
+          <h3>接着剤の経年劣化</h3>
+          <p>詰め物を固定している接着剤は、年月とともに劣化します。特に長期間経過した詰め物は、日常の噛む力で徐々に外れやすくなることがあります。</p>
+        </div>
+        <div class="cause-card card">
+          <h3>詰め物の下の虫歯</h3>
+          <p>詰め物の下で虫歯が進行すると、歯と詰め物の間にすき間ができて外れやすくなります。</p>
+        </div>
+        <div class="cause-card card">
+          <h3>噛み合わせの変化</h3>
+          <p>歯ぎしりや食いしばり、あるいは周囲の歯の変化により、詰め物に過度な力がかかって外れることがあります。</p>
+        </div>
+        <div class="cause-card card">
+          <h3>歯の破折</h3>
+          <p>歯そのものにひびが入ったり欠けたりすることで、詰め物が固定できなくなるケースもあります。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 当院での対応 -->
+  <section class="section-padding">
+    <div class="container-narrow">
+      <h2 class="section-title">当院での対応</h2>
+      <div class="flow-steps">
+        <div class="flow-step">
+          <span class="flow-number">1</span>
+          <div>
+            <h3>取れた詰め物と歯の状態を確認します</h3>
+            <p>お持ちいただいた詰め物と、歯の状態をそれぞれ確認します。必要に応じてレントゲンで歯の内部の状態も調べます。</p>
+          </div>
+        </div>
+        <div class="flow-step">
+          <span class="flow-number">2</span>
+          <div>
+            <h3>治療の選択肢をご説明します</h3>
+            <p>そのまま戻せる場合、作り直しが必要な場合、虫歯治療が必要な場合など、状態に応じた選択肢を丁寧にご説明します。</p>
+          </div>
+        </div>
+        <div class="flow-step">
+          <span class="flow-number">3</span>
+          <div>
+            <h3>ご納得いただいてから処置を行います</h3>
+            <p>費用や治療期間なども含めてご説明し、ご理解いただいた上で治療を進めます。保険適用の素材から自費の素材まで、ご希望に合わせて対応いたします。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 関連ページ -->
+  <section class="section-padding bg-soft">
+    <div class="container-narrow">
+      <h2 class="section-title">関連する診療案内</h2>
+      <div class="related-links">
+        <a href="/services/cavity/" class="related-link card">
+          <span class="related-label">虫歯治療</span>
+          <span class="related-arrow">&rarr;</span>
+        </a>
+        <a href="/services/preventive/" class="related-link card">
+          <span class="related-label">予防歯科</span>
+          <span class="related-arrow">&rarr;</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <SectionCTA />
+</BaseLayout>
+
+<style>
+  .advice-box {
+    background: var(--color-bg-soft);
+    border-radius: var(--radius);
+    padding: 2rem;
+    border: 1px solid var(--color-border);
+  }
+  .advice-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+  .advice-list li {
+    padding-left: 1.5rem;
+    position: relative;
+  }
+  .advice-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.35rem;
+    width: 0.75rem;
+    height: 0.75rem;
+    background: var(--color-primary);
+    border-radius: 50%;
+  }
+  .advice-list strong {
+    display: block;
+    font-size: 1.05rem;
+    margin-bottom: 0.25rem;
+  }
+  .advice-list p {
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: var(--color-text-light);
+    margin: 0;
+  }
+  .symptom-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+  .symptom-list li {
+    padding: 1rem 1.25rem;
+    background: var(--color-bg-soft);
+    border-radius: var(--radius);
+    border-left: 4px solid var(--color-primary);
+    font-weight: 500;
+  }
+  .note {
+    color: var(--color-text-light);
+    font-size: 0.9rem;
+    line-height: 1.8;
+  }
+  .cause-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  .cause-card {
+    padding: 1.5rem;
+  }
+  .cause-card h3 {
+    font-size: 1.1rem;
+    color: var(--color-primary);
+    margin-bottom: 0.5rem;
+  }
+  .cause-card p {
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: var(--color-text);
+  }
+  .flow-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+  .flow-step {
+    display: flex;
+    gap: 1.25rem;
+    align-items: flex-start;
+  }
+  .flow-number {
+    flex-shrink: 0;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    background: var(--color-primary);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.1rem;
+  }
+  .flow-step h3 {
+    font-size: 1.05rem;
+    margin-bottom: 0.4rem;
+  }
+  .flow-step p {
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: var(--color-text);
+  }
+  .related-links {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+  }
+  .related-link {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 1.5rem;
+    text-decoration: none;
+    color: var(--color-text);
+    transition: box-shadow 0.2s ease;
+  }
+  .related-link:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  }
+  .related-label {
+    font-weight: 600;
+  }
+  .related-arrow {
+    color: var(--color-primary);
+    font-size: 1.2rem;
+  }
+  .bg-soft {
+    background: var(--color-bg-soft);
+  }
+</style>

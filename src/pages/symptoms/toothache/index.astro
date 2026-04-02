@@ -1,0 +1,217 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import PageHero from "../../../components/PageHero.astro";
+import Breadcrumb from "../../../components/Breadcrumb.astro";
+import SectionCTA from "../../../components/SectionCTA.astro";
+import { SITE } from "../../../data/site";
+---
+
+<BaseLayout
+  title="歯が痛い"
+  description="歯が痛いとお悩みの方へ。湘南桑田歯科では痛みの原因を丁寧に調べ、適切な治療をご提案します。"
+>
+  <PageHero
+    title="歯が痛い"
+    subtitle="痛みの原因を丁寧に調べ、適切な治療をご提案します"
+    image="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=1400&q=80"
+  />
+
+  <div class="container-narrow">
+    <Breadcrumb items={[{ label: "症状から探す" }, { label: "歯が痛い" }]} />
+  </div>
+
+  <!-- こんな痛みはありませんか？ -->
+  <section class="section-padding">
+    <div class="container-narrow">
+      <h2 class="section-title">こんな痛みはありませんか？</h2>
+      <ul class="symptom-list">
+        <li>噛むと痛い・ズキッとする</li>
+        <li>何もしなくてもズキズキ痛む</li>
+        <li>冷たいものや熱いもので痛みが出る</li>
+        <li>夜になると痛みがひどくなる</li>
+        <li>痛みが顔や頭にまで広がる感じがする</li>
+      </ul>
+      <p class="note">
+        歯の痛みにはさまざまな原因が考えられます。痛みの種類やタイミングによって、適切な対応が異なりますので、まずはお気軽にご相談ください。
+      </p>
+    </div>
+  </section>
+
+  <!-- 考えられる原因 -->
+  <section class="section-padding bg-soft">
+    <div class="container-narrow">
+      <h2 class="section-title">考えられる原因</h2>
+      <div class="cause-grid">
+        <div class="cause-card card">
+          <h3>虫歯</h3>
+          <p>虫歯が進行すると、歯の神経に刺激が届き痛みが生じることがあります。初期段階では痛みを感じにくいため、気づいた頃にはある程度進行している場合もあります。</p>
+        </div>
+        <div class="cause-card card">
+          <h3>歯の破折・ひび</h3>
+          <p>強い力で噛んだり、歯ぎしりの習慣などで歯にひびが入ると、噛むたびに痛みが出ることがあります。見た目ではわかりにくい場合もあります。</p>
+        </div>
+        <div class="cause-card card">
+          <h3>歯髄炎（しずいえん）</h3>
+          <p>虫歯が深く進行し、歯の神経（歯髄）にまで細菌が及ぶと、強い痛みやズキズキとした持続的な痛みが出ることがあります。</p>
+        </div>
+        <div class="cause-card card">
+          <h3>歯周病</h3>
+          <p>歯を支える骨や歯茎に炎症が起きると、噛んだときの痛みや違和感につながることがあります。</p>
+        </div>
+      </div>
+      <p class="note">
+        上記は一般的な例です。実際の原因は検査をしてみないとわかりません。自己判断せず、お早めにご相談いただくことをおすすめします。
+      </p>
+    </div>
+  </section>
+
+  <!-- 当院での対応 -->
+  <section class="section-padding">
+    <div class="container-narrow">
+      <h2 class="section-title">当院での対応</h2>
+      <div class="flow-steps">
+        <div class="flow-step">
+          <span class="flow-number">1</span>
+          <div>
+            <h3>まず痛みの状態を丁寧にお伺いします</h3>
+            <p>いつから、どんなときに、どのように痛むかを詳しくお聞きします。痛みがつらい場合は、まず応急的に痛みを和らげる処置を行います。</p>
+          </div>
+        </div>
+        <div class="flow-step">
+          <span class="flow-number">2</span>
+          <div>
+            <h3>検査で原因を特定します</h3>
+            <p>レントゲンや視診などを用いて、痛みの原因をしっかりと調べます。</p>
+          </div>
+        </div>
+        <div class="flow-step">
+          <span class="flow-number">3</span>
+          <div>
+            <h3>わかりやすくご説明し、ご納得いただいてから治療に入ります</h3>
+            <p>検査結果と治療の選択肢を丁寧にご説明します。不安なことや気になることがあれば、何でもお聞きください。無理に治療を進めることはありません。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 関連ページ -->
+  <section class="section-padding bg-soft">
+    <div class="container-narrow">
+      <h2 class="section-title">関連する診療案内</h2>
+      <div class="related-links">
+        <a href="/services/cavity/" class="related-link card">
+          <span class="related-label">虫歯治療</span>
+          <span class="related-arrow">&rarr;</span>
+        </a>
+        <a href="/services/periodontal/" class="related-link card">
+          <span class="related-label">歯周病治療</span>
+          <span class="related-arrow">&rarr;</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <SectionCTA />
+</BaseLayout>
+
+<style>
+  .symptom-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+  .symptom-list li {
+    padding: 1rem 1.25rem;
+    background: var(--color-bg-soft);
+    border-radius: var(--radius);
+    border-left: 4px solid var(--color-primary);
+    font-weight: 500;
+  }
+  .note {
+    color: var(--color-text-light);
+    font-size: 0.9rem;
+    line-height: 1.8;
+  }
+  .cause-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  .cause-card {
+    padding: 1.5rem;
+  }
+  .cause-card h3 {
+    font-size: 1.1rem;
+    color: var(--color-primary);
+    margin-bottom: 0.5rem;
+  }
+  .cause-card p {
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: var(--color-text);
+  }
+  .flow-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+  .flow-step {
+    display: flex;
+    gap: 1.25rem;
+    align-items: flex-start;
+  }
+  .flow-number {
+    flex-shrink: 0;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    background: var(--color-primary);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.1rem;
+  }
+  .flow-step h3 {
+    font-size: 1.05rem;
+    margin-bottom: 0.4rem;
+  }
+  .flow-step p {
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: var(--color-text);
+  }
+  .related-links {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+  }
+  .related-link {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 1.5rem;
+    text-decoration: none;
+    color: var(--color-text);
+    transition: box-shadow 0.2s ease;
+  }
+  .related-link:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  }
+  .related-label {
+    font-weight: 600;
+  }
+  .related-arrow {
+    color: var(--color-primary);
+    font-size: 1.2rem;
+  }
+  .bg-soft {
+    background: var(--color-bg-soft);
+  }
+</style>

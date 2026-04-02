@@ -1,0 +1,89 @@
+---
+import "../styles/global.css";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import MobileBar from "../components/MobileBar.astro";
+import ThemeSwitcher from "../components/ThemeSwitcher.astro";
+import { SITE } from "../data/site";
+
+interface Props {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+}
+
+const {
+  title = SITE.name,
+  description = SITE.description,
+  ogImage = "/images/common/og-default.jpg",
+} = Astro.props;
+
+const pageTitle = title === SITE.name ? title : `${title} | ${SITE.name}`;
+
+// Schema.org Dentist structured data
+const schemaOrg = {
+  "@context": "https://schema.org",
+  "@type": "Dentist",
+  name: SITE.name,
+  description: SITE.description,
+  url: SITE.url,
+  telephone: SITE.phone,
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "藤沢市南藤沢XX-XX",
+    addressLocality: "藤沢市",
+    addressRegion: "神奈川県",
+    postalCode: "251-XXXX",
+    addressCountry: "JP",
+  },
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Friday"],
+      opens: "09:30",
+      closes: "19:00",
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: "Saturday",
+      opens: "09:30",
+      closes: "17:00",
+    },
+  ],
+  medicalSpecialty: ["GeneralDentistry", "PediatricDentistry", "Periodontics"],
+  isAcceptingNewPatients: true,
+  areaServed: { "@type": "City", name: "藤沢市" },
+};
+---
+
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script type="application/ld+json" set:html={JSON.stringify(schemaOrg)} />
+  </head>
+  <body>
+    <ThemeSwitcher />
+    <Header />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+    <MobileBar />
+  </body>
+</html>

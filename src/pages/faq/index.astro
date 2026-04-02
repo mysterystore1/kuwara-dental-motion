@@ -1,0 +1,179 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import PageHero from "../../components/PageHero.astro";
+import Breadcrumb from "../../components/Breadcrumb.astro";
+import SectionCTA from "../../components/SectionCTA.astro";
+import { SITE } from "../../data/site";
+
+const faqCategories = [
+  {
+    title: "初診について",
+    items: [
+      {
+        q: "初めての来院ですが、何を持っていけばいいですか？",
+        a: "保険証をお持ちください。お薬手帳がある方はそちらもご持参いただけると助かります。問診票は院内でご記入いただけますので、ご予約時間の10分ほど前にお越しいただけるとスムーズです。",
+      },
+      {
+        q: "初診の所要時間はどれくらいですか？",
+        a: "初回は問診・検査・カウンセリングを含めて、45分～1時間程度お時間をいただいております。お口の状態をしっかり把握したうえで、丁寧にご説明いたします。",
+      },
+      {
+        q: "予約なしでも受診できますか？",
+        a: "急な痛みなど、お困りの場合は予約なしでもできる限り対応いたします。ただし、ご予約の方が優先となりますので、お待ちいただく場合がございます。事前のご連絡をおすすめしています。",
+      },
+      {
+        q: "小さな子どもを連れて行っても大丈夫ですか？",
+        a: "はい、お子さま連れでも安心してお越しください。待合室にはキッズスペースもございます。お子さまの治療も対応しておりますので、ご家族でご来院いただけます。",
+      },
+    ],
+  },
+  {
+    title: "治療について",
+    items: [
+      {
+        q: "歯医者が怖いのですが、大丈夫ですか？",
+        a: "大丈夫です。当院では無理に治療を始めることはありません。まずはお話を聞かせていただき、患者さまのペースに合わせて進めます。怖いと感じたらいつでもお伝えください。",
+      },
+      {
+        q: "痛みが少ない治療はできますか？",
+        a: "はい。表面麻酔や極細の注射針を使用し、痛みを最小限に抑える工夫をしています。治療中に痛みがあれば、遠慮なくお伝えください。すぐに対応いたします。",
+      },
+      {
+        q: "久しぶりの歯医者で恥ずかしいのですが…",
+        a: "ご安心ください。当院には久しぶりに歯医者にいらっしゃる方がたくさん通われています。どんな状態でもお気持ちに寄り添い、一緒に治療計画を考えてまいります。",
+      },
+      {
+        q: "治療の説明はしてもらえますか？",
+        a: "もちろんです。治療を始める前に、現在の状態と治療方針を丁寧にご説明いたします。モニターを使ってお口の中の写真をお見せしながら、わかりやすくお伝えします。",
+      },
+      {
+        q: "治療期間はどれくらいかかりますか？",
+        a: "お口の状態によって異なりますが、初回のカウンセリング時におおよその期間をお伝えします。なるべく少ない通院回数で済むよう、効率的な治療計画を心がけています。",
+      },
+    ],
+  },
+  {
+    title: "費用について",
+    items: [
+      {
+        q: "保険診療で治療できますか？",
+        a: "はい、一般的な虫歯治療・歯周病治療・抜歯などは保険適用です。保険診療の場合、窓口でのお支払いは原則3割負担となります。治療前に費用の目安をお伝えすることも可能です。",
+      },
+      {
+        q: "クレジットカードは使えますか？",
+        a: "自費診療については各種クレジットカードをご利用いただけます。また、高額な治療にはデンタルローンもご案内しておりますので、お気軽にご相談ください。",
+      },
+      {
+        q: "ホワイトニングの費用はどれくらいですか？",
+        a: "オフィスホワイトニングは1回22,000円～、ホームホワイトニングは上下セットで33,000円～となっております。詳しくは料金表ページをご覧いただくか、お問い合わせください。",
+      },
+    ],
+  },
+  {
+    title: "その他",
+    items: [
+      {
+        q: "駐車場はありますか？",
+        a: "提携駐車場がございます。詳しくはアクセスページをご確認いただくか、お電話にてお問い合わせください。",
+      },
+      {
+        q: "車椅子でも通院できますか？",
+        a: "はい、院内はバリアフリー対応となっておりますので、車椅子の方も安心してご来院いただけます。",
+      },
+      {
+        q: "急に歯が痛くなった場合はどうすればいいですか？",
+        a: `まずはお電話（${SITE.phone}）にてご連絡ください。診療時間内であれば、できる限り当日対応いたします。夜間や休診日の場合は、藤沢市の休日歯科診療所もご案内できます。`,
+      },
+    ],
+  },
+];
+---
+
+<BaseLayout title="よくあるご質問" description="湘南桑田歯科へのよくあるご質問と回答。初診、治療、費用についてお答えします。">
+  <PageHero title="よくあるご質問" />
+
+  <div class="container-narrow">
+    <Breadcrumb items={[{ label: "よくあるご質問" }]} />
+  </div>
+
+  <!-- ========== FAQ ========== -->
+  <section class="faq section-padding">
+    <div class="container-narrow">
+      {faqCategories.map((cat) => (
+        <div class="faq-category">
+          <h2 class="category-title">{cat.title}</h2>
+          <div class="faq-list">
+            {cat.items.map((item) => (
+              <details class="faq-item">
+                <summary>{item.q}</summary>
+                <p>{item.a}</p>
+              </details>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <SectionCTA />
+</BaseLayout>
+
+<style>
+  /* ---------- FAQ ---------- */
+  .faq-category {
+    margin-bottom: 3rem;
+  }
+  .faq-category:last-child {
+    margin-bottom: 0;
+  }
+  .category-title {
+    font-size: 1.3rem;
+    color: var(--color-primary);
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--color-primary-light);
+    margin-bottom: 1rem;
+  }
+  .faq-list {
+    max-width: 800px;
+  }
+  .faq-item {
+    border-bottom: 1px solid var(--color-border);
+    padding: 1.25rem 0;
+  }
+  .faq-item summary {
+    font-weight: 600;
+    cursor: pointer;
+    padding: 0.25rem 0;
+    padding-right: 2rem;
+    list-style: none;
+    position: relative;
+    line-height: 1.6;
+  }
+  .faq-item summary::before {
+    content: "Q. ";
+    color: var(--color-primary);
+    font-weight: 700;
+  }
+  .faq-item summary::after {
+    content: "+";
+    position: absolute;
+    right: 0;
+    top: 0.25rem;
+    font-size: 1.25rem;
+    color: var(--color-primary);
+    transition: transform 0.2s;
+  }
+  .faq-item[open] summary::after {
+    content: "-";
+  }
+  .faq-item summary::-webkit-details-marker {
+    display: none;
+  }
+  .faq-item p {
+    margin-top: 0.75rem;
+    padding-left: 1.5rem;
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+    line-height: 1.8;
+  }
+</style>
