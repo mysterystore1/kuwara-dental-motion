@@ -1,11 +1,11 @@
 /** Site-wide constants — change here, update everywhere */
 export const SITE = {
-  name: "湘南桑田歯科",
-  nameShort: "桑田歯科",
+  name: "辻堂がじゅまる歯科",
+  nameShort: "がじゅまる歯科",
   tagline: "まずは話を聞くことから始める歯科医院",
   description:
     "歯医者がこわくて、なかなか行けていない方も相談しやすい歯科医院です。必要以上に削らず、責めず、無理に治療を進めないことを大切にしています。",
-  url: "https://kuwara-dental.example.com",
+  url: "https://gajumaru-dental.example.com",
   phone: "0466-XX-XXXX",
   phoneHref: "tel:0466XXXXXX",
   address: {

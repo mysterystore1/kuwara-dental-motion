@@ -13,7 +13,7 @@
   <path d="M300 116C325 116 352 138 352 166" stroke="#DB8B57" stroke-width="6" stroke-linecap="round"/>
   <g transform="translate(430 166)">
     <path d="M0 18C0 8.059 8.059 0 18 0H164C173.941 0 182 8.059 182 18V92C182 101.941 173.941 110 164 110H18C8.059 110 0 101.941 0 92V18Z" fill="white" stroke="#D7E7F0" stroke-width="3"/>
-    <text x="91" y="38" fill="#17344C" font-size="24" text-anchor="middle" font-family="Noto Sans JP, sans-serif">湘南桑田歯科</text>
+    <text x="91" y="38" fill="#17344C" font-size="24" text-anchor="middle" font-family="Noto Sans JP, sans-serif">辻堂がじゅまる歯科</text>
     <text x="91" y="66" fill="#62798C" font-size="16" text-anchor="middle" font-family="Noto Sans JP, sans-serif">駅からまっすぐ来れます</text>
     <rect x="42" y="78" width="98" height="18" rx="9" fill="#EEF6FB"/>
     <text x="91" y="92" fill="#2C5D7B" font-size="12" text-anchor="middle" font-family="Noto Sans JP, sans-serif">WEB予約 / 電話 / LINE</text>

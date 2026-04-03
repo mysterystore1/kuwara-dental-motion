@@ -13,7 +13,7 @@
   <path d="M300 116C325 116 352 138 352 166" stroke="#E1965D" stroke-width="6" stroke-linecap="round"/>
   <g transform="translate(430 166)">
     <path d="M0 18C0 8.059 8.059 0 18 0H164C173.941 0 182 8.059 182 18V92C182 101.941 173.941 110 164 110H18C8.059 110 0 101.941 0 92V18Z" fill="white" stroke="#F0E2D3" stroke-width="3"/>
-    <text x="91" y="38" fill="#2D4454" font-size="24" text-anchor="middle" font-family="Noto Sans JP, sans-serif">湘南桑田歯科</text>
+    <text x="91" y="38" fill="#2D4454" font-size="24" text-anchor="middle" font-family="Noto Sans JP, sans-serif">辻堂がじゅまる歯科</text>
     <text x="91" y="66" fill="#7C837C" font-size="16" text-anchor="middle" font-family="Noto Sans JP, sans-serif">親子で通いやすい歯科医院</text>
     <rect x="36" y="78" width="110" height="18" rx="9" fill="#FFF1E7"/>
     <text x="91" y="92" fill="#B36434" font-size="12" text-anchor="middle" font-family="Noto Sans JP, sans-serif">相談だけでも大丈夫です</text>
