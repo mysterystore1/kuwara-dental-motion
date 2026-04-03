@@ -32,38 +32,26 @@ const { slides } = Astro.props;
     ))}
   </div>
 
-  <div class="hero-carousel__card">
-    <div class="hero-carousel__copy">
-      {slides.map((slide, index) => (
-        <article class:list={["hero-carousel__copy-item", index === 0 && "is-active"]} data-carousel-copy>
-          <span class="hero-carousel__label">{slide.label}</span>
-          <h3>{slide.title}</h3>
-          <p>{slide.description}</p>
-        </article>
-      ))}
+  <div class="hero-carousel__hud" aria-label="ヒーロー画像の切り替え">
+    <div class="hero-carousel__controls">
+      <button type="button" class="hero-carousel__arrow" data-carousel-prev aria-label="前の画像へ">
+        <span aria-hidden="true">←</span>
+      </button>
+      <button type="button" class="hero-carousel__arrow" data-carousel-next aria-label="次の画像へ">
+        <span aria-hidden="true">→</span>
+      </button>
     </div>
 
-    <div class="hero-carousel__footer">
-      <div class="hero-carousel__controls">
-        <button type="button" class="hero-carousel__arrow" data-carousel-prev aria-label="前のスライド">
-          <span aria-hidden="true">←</span>
-        </button>
-        <button type="button" class="hero-carousel__arrow" data-carousel-next aria-label="次のスライド">
-          <span aria-hidden="true">→</span>
-        </button>
-      </div>
-
-      <div class="hero-carousel__dots" role="tablist" aria-label="ヒーローカルーセル">
-        {slides.map((slide, index) => (
-          <button
-            type="button"
-            class:list={["hero-carousel__dot", index === 0 && "is-active"]}
-            data-carousel-dot
-            aria-label={`${index + 1}枚目: ${slide.title}`}
-            aria-selected={index === 0 ? "true" : "false"}
-          ></button>
-        ))}
-      </div>
+    <div class="hero-carousel__dots" role="tablist" aria-label="ヒーロー画像の切り替え">
+      {slides.map((slide, index) => (
+        <button
+          type="button"
+          class:list={["hero-carousel__dot", index === 0 && "is-active"]}
+          data-carousel-dot
+          aria-label={`${index + 1}枚目: ${slide.title}`}
+          aria-selected={index === 0 ? "true" : "false"}
+        ></button>
+      ))}
     </div>
   </div>
 </div>
@@ -73,7 +61,6 @@ const { slides } = Astro.props;
 
   function initCarousel(root) {
     const slides = Array.from(root.querySelectorAll("[data-carousel-slide]"));
-    const copies = Array.from(root.querySelectorAll("[data-carousel-copy]"));
     const dots = Array.from(root.querySelectorAll("[data-carousel-dot]"));
     const prev = root.querySelector("[data-carousel-prev]");
     const next = root.querySelector("[data-carousel-next]");
@@ -89,10 +76,6 @@ const { slides } = Astro.props;
 
       slides.forEach((slide, slideIndex) => {
         slide.classList.toggle("is-active", slideIndex === index);
-      });
-
-      copies.forEach((copy, copyIndex) => {
-        copy.classList.toggle("is-active", copyIndex === index);
       });
 
       dots.forEach((dot, dotIndex) => {
@@ -179,22 +162,8 @@ const { slides } = Astro.props;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 38% 62% 46% 54% / 52% 42% 58% 48%;
+    border-radius: 2.25rem;
     box-shadow: var(--shadow-float);
-    translate: 0 0;
-    will-change: translate;
-  }
-
-  .hero-carousel__card {
-    position: absolute;
-    inset: auto auto 0 0;
-    width: min(24rem, 64%);
-    padding: 1.15rem 1.15rem 1rem;
-    border-radius: 1.8rem;
-    border: 1px solid rgba(125, 173, 200, 0.16);
-    background: rgba(255, 255, 255, 0.92);
-    box-shadow: 0 22px 42px rgba(27, 53, 82, 0.12);
-    backdrop-filter: blur(12px);
     translate: 0 0;
     will-change: translate;
   }
@@ -203,68 +172,21 @@ const { slides } = Astro.props;
     animation: hero-carousel-image-float 14s ease-in-out infinite;
   }
 
-  .hero-carousel__card {
-    animation: hero-carousel-card-float 12s ease-in-out infinite 1s;
-  }
-
-  .hero-carousel__copy {
-    position: relative;
-    min-height: 7.9rem;
-  }
-
-  .hero-carousel__copy-item {
+  .hero-carousel__hud {
     position: absolute;
-    inset: 0;
-    display: grid;
-    gap: 0.4rem;
-    opacity: 0;
-    transform: translateY(0.35rem);
-    transition: opacity 0.72s cubic-bezier(0.16, 1, 0.3, 1), transform 0.72s cubic-bezier(0.16, 1, 0.3, 1);
-    pointer-events: none;
-  }
-
-  .hero-carousel__copy-item.is-active {
-    opacity: 1;
-    transform: translateY(0);
-    pointer-events: auto;
-  }
-
-  .hero-carousel__label {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.55rem;
-    color: var(--color-accent);
-    font-size: 0.78rem;
-    font-weight: 700;
-    letter-spacing: 0.18em;
-  }
-
-  .hero-carousel__label::after {
-    content: "";
-    width: 2rem;
-    height: 1px;
-    background: currentColor;
-    opacity: 0.45;
-  }
-
-  .hero-carousel__copy-item h3 {
-    font-size: 1.12rem;
-    line-height: 1.45;
-    color: var(--color-ink);
-  }
-
-  .hero-carousel__copy-item p {
-    color: var(--color-text-soft);
-    font-size: 0.92rem;
-    line-height: 1.7;
-  }
-
-  .hero-carousel__footer {
+    left: 1.25rem;
+    right: 1.25rem;
+    bottom: 0.9rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 1rem;
-    margin-top: 1rem;
+    gap: 0.85rem;
+    padding: 0.55rem 0.75rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.82);
+    border: 1px solid rgba(125, 173, 200, 0.14);
+    box-shadow: 0 12px 30px rgba(27, 53, 82, 0.08);
+    backdrop-filter: blur(10px);
   }
 
   .hero-carousel__controls,
@@ -317,21 +239,17 @@ const { slides } = Astro.props;
   }
 
   :global(html[data-theme="warm"]) .hero-carousel__slide.is-active {
-    transform: translateX(0) translateY(0) scale(1) rotate(-0.4deg);
+    transform: translateX(0) translateY(0) scale(1) rotate(-0.2deg);
   }
 
   :global(html[data-theme="warm"]) .hero-carousel__image {
-    border-radius: 28% 72% 42% 58% / 58% 34% 66% 42%;
+    border-radius: 2.4rem;
   }
 
-  :global(html[data-theme="warm"]) .hero-carousel__card {
-    inset: auto 0 0 auto;
-    width: min(26rem, 69%);
-    border-radius: 2.2rem;
-    background: linear-gradient(180deg, rgba(255, 250, 244, 0.96), rgba(255, 242, 229, 0.96));
-    border-color: rgba(211, 159, 116, 0.22);
-    rotate: 1.5deg;
-    box-shadow: 0 26px 48px rgba(111, 92, 62, 0.16);
+  :global(html[data-theme="warm"]) .hero-carousel__hud {
+    background: rgba(255, 249, 242, 0.84);
+    border-color: rgba(211, 159, 116, 0.2);
+    box-shadow: 0 14px 32px rgba(111, 92, 62, 0.1);
   }
 
   :global(html[data-theme="warm"]) .hero-carousel__arrow {
@@ -343,32 +261,20 @@ const { slides } = Astro.props;
     background: rgba(229, 138, 82, 0.22);
   }
 
-  @media (prefers-reduced-motion: reduce) {
-    .hero-carousel__slide,
-    .hero-carousel__copy-item {
-      transition: none;
-    }
-  }
-
   @media (max-width: 900px) {
     .hero-carousel__media {
       inset: 2% 2% 18% 8%;
     }
 
-    .hero-carousel__card {
-      width: min(23rem, 74%);
+    .hero-carousel__hud {
+      left: 1rem;
+      right: 1rem;
     }
   }
 
   @media (max-width: 900px) {
     :global(html[data-theme="warm"]) .hero-carousel__media {
       inset: 2% 2% 18% 7%;
-    }
-
-    :global(html[data-theme="warm"]) .hero-carousel__card {
-      inset: auto auto 0 0;
-      width: min(23rem, 75%);
-      rotate: 0.8deg;
     }
   }
 
@@ -377,33 +283,17 @@ const { slides } = Astro.props;
       inset: 2% 1% 24% 7%;
     }
 
-    .hero-carousel__card {
-      width: min(21rem, 80%);
-      padding: 1rem;
-    }
-
-    .hero-carousel__copy {
-      min-height: 8.8rem;
-    }
-
-    .hero-carousel__copy-item h3 {
-      font-size: 1rem;
-    }
-
-    .hero-carousel__copy-item p {
-      font-size: 0.86rem;
+    .hero-carousel__hud {
+      left: 0.7rem;
+      right: 0.7rem;
+      bottom: 0.6rem;
+      padding: 0.45rem 0.6rem;
     }
   }
 
   @media (max-width: 640px) {
     :global(html[data-theme="warm"]) .hero-carousel__media {
       inset: 2% 1% 24% 6%;
-    }
-
-    :global(html[data-theme="warm"]) .hero-carousel__card {
-      inset: auto auto 0 0;
-      width: min(21rem, 82%);
-      rotate: 0deg;
     }
   }
 
@@ -418,20 +308,12 @@ const { slides } = Astro.props;
     }
   }
 
-  @keyframes hero-carousel-card-float {
-    0%,
-    100% {
-      translate: 0 0;
-    }
-
-    50% {
-      translate: 0 -0.2rem;
-    }
-  }
-
   @media (prefers-reduced-motion: reduce) {
-    .hero-carousel__slide.is-active .hero-carousel__image,
-    .hero-carousel__card {
+    .hero-carousel__slide {
+      transition: none;
+    }
+
+    .hero-carousel__slide.is-active .hero-carousel__image {
       animation: none !important;
       translate: 0 0 !important;
     }
