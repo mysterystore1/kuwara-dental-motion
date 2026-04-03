@@ -156,7 +156,7 @@ const { slides } = Astro.props;
 
   .hero-carousel__media {
     position: absolute;
-    inset: 2% 2% 18% 16%;
+    inset: 0 0 13% 6%;
   }
 
   .hero-carousel__slide {
@@ -188,7 +188,7 @@ const { slides } = Astro.props;
   .hero-carousel__card {
     position: absolute;
     inset: auto auto 0 0;
-    width: min(22rem, 62%);
+    width: min(24rem, 64%);
     padding: 1.15rem 1.15rem 1rem;
     border-radius: 1.8rem;
     border: 1px solid rgba(125, 173, 200, 0.16);
@@ -309,7 +309,7 @@ const { slides } = Astro.props;
   }
 
   :global(html[data-theme="warm"]) .hero-carousel__media {
-    inset: 0 4% 19% 10%;
+    inset: 0 1% 14% 4%;
   }
 
   :global(html[data-theme="warm"]) .hero-carousel__slide {
@@ -326,7 +326,7 @@ const { slides } = Astro.props;
 
   :global(html[data-theme="warm"]) .hero-carousel__card {
     inset: auto 0 0 auto;
-    width: min(24rem, 66%);
+    width: min(26rem, 69%);
     border-radius: 2.2rem;
     background: linear-gradient(180deg, rgba(255, 250, 244, 0.96), rgba(255, 242, 229, 0.96));
     border-color: rgba(211, 159, 116, 0.22);
@@ -352,33 +352,33 @@ const { slides } = Astro.props;
 
   @media (max-width: 900px) {
     .hero-carousel__media {
-      inset: 4% 5% 24% 12%;
+      inset: 2% 2% 18% 8%;
     }
 
     .hero-carousel__card {
-      width: min(22rem, 72%);
+      width: min(23rem, 74%);
     }
   }
 
   @media (max-width: 900px) {
     :global(html[data-theme="warm"]) .hero-carousel__media {
-      inset: 4% 5% 24% 12%;
+      inset: 2% 2% 18% 7%;
     }
 
     :global(html[data-theme="warm"]) .hero-carousel__card {
       inset: auto auto 0 0;
-      width: min(22rem, 72%);
+      width: min(23rem, 75%);
       rotate: 0.8deg;
     }
   }
 
   @media (max-width: 640px) {
     .hero-carousel__media {
-      inset: 4% 3% 28% 10%;
+      inset: 2% 1% 24% 7%;
     }
 
     .hero-carousel__card {
-      width: min(20rem, 78%);
+      width: min(21rem, 80%);
       padding: 1rem;
     }
 
@@ -397,12 +397,12 @@ const { slides } = Astro.props;
 
   @media (max-width: 640px) {
     :global(html[data-theme="warm"]) .hero-carousel__media {
-      inset: 4% 3% 28% 8%;
+      inset: 2% 1% 24% 6%;
     }
 
     :global(html[data-theme="warm"]) .hero-carousel__card {
       inset: auto auto 0 0;
-      width: min(20rem, 80%);
+      width: min(21rem, 82%);
       rotate: 0deg;
     }
   }
