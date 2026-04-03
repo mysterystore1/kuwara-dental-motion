@@ -154,51 +154,19 @@ const faqPreview = [
         <h1 class="home-hero__title">歯医者がこわくて、<br />なかなか行けていない方へ。</h1>
         <p class="home-hero__promise">まずはお話を聞くところから始めます。</p>
         <p class="home-hero__text">
-          痛みが苦手な方も、怒られるのが苦手な方も大丈夫です。無理に治療を進めることはありません。
+          痛みが苦手な方も、怒られるのが苦手な方も大丈夫です。何をすればいいかわからなくても、そのままの状態でご相談ください。
         </p>
-
-        <div class="home-hero__microcopy">
-          <span>痛みが苦手な方へ</span>
-          <span>怒られるのが苦手な方へ</span>
-          <span>相談だけでも大丈夫です</span>
-        </div>
-
-        <div class="home-hero__notice">
-          <p class="eyebrow">ご予約前に</p>
-          <p class="home-hero__notice-main">何をすればいいかわからなくても、そのままで大丈夫です。</p>
-          <p class="home-hero__notice-sub">今つらいところや、気になっていることをお聞かせください。</p>
-        </div>
 
         <div class="home-hero__actions">
           <a href="/reserve/" class="btn-primary">WEB予約する</a>
           <a href={SITE.phoneHref} class="btn-secondary">電話で相談</a>
           <a href="/first-visit/" class="btn-secondary home-hero__link">初めての方へ</a>
         </div>
-
-        <div class="home-hero__chips">
-          <span class="icon-chip"><DentalIcon name="pin" size={18} /> {SITE.address.station}</span>
-          <span class="icon-chip"><DentalIcon name="clock" size={18} /> 平日19時まで診療</span>
-          <span class="icon-chip"><DentalIcon name="chat" size={18} /> 相談だけでも大丈夫です</span>
-        </div>
       </div>
 
       <div class="home-hero__visual" data-reveal data-reveal-origin="right" style="--reveal-delay: 120ms;">
         <div class="hero-orb hero-orb--one"></div>
         <div class="hero-orb hero-orb--two"></div>
-        <ThemedImage
-          defaultSrc={VISUALS.decorSpark.defaultSrc}
-          warmSrc={VISUALS.decorSpark.warmSrc}
-          alt=""
-          class="decor-float decor-float--spark home-hero__spark"
-          loading="eager"
-        />
-        <ThemedImage
-          defaultSrc={VISUALS.decorLoop.defaultSrc}
-          warmSrc={VISUALS.decorLoop.warmSrc}
-          alt=""
-          class="decor-float decor-float--loop home-hero__loop"
-          loading="eager"
-        />
         <HeroCarousel slides={heroSlides} />
       </div>
     </div>
@@ -602,59 +570,11 @@ const faqPreview = [
     max-width: 34rem;
   }
 
-  .home-hero__microcopy {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.6rem;
-    margin-top: 1rem;
-  }
-
-  .home-hero__microcopy span {
-    display: inline-flex;
-    align-items: center;
-    min-height: 2.3rem;
-    padding: 0.55rem 0.9rem;
-    border-radius: 999px;
-    background: rgba(255, 255, 255, 0.74);
-    border: 1px solid rgba(125, 173, 200, 0.16);
-    color: var(--color-ink);
-    font-size: 0.86rem;
-    font-weight: 600;
-  }
-
-  .home-hero__notice {
-    display: grid;
-    gap: 0.35rem;
-    margin-top: 1.2rem;
-    max-width: 32rem;
-    padding-top: 0.8rem;
-    border-top: 1px solid rgba(125, 173, 200, 0.16);
-  }
-
-  .home-hero__notice-main {
-    color: var(--color-heading);
-    font-size: 1rem;
-    font-weight: 700;
-  }
-
-  .home-hero__notice-sub {
-    color: var(--color-text-soft);
-    font-size: 0.92rem;
-    line-height: 1.7;
-  }
-
   .home-hero__actions {
     display: flex;
     flex-wrap: wrap;
     gap: 0.9rem;
-    margin-top: 1.6rem;
-  }
-
-  .home-hero__chips {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.75rem;
-    margin-top: 1.55rem;
+    margin-top: 1.9rem;
   }
 
   .home-hero__visual {
@@ -687,16 +607,6 @@ const faqPreview = [
     background: rgba(219, 139, 87, 0.12);
     animation-duration: 15s;
     animation-direction: reverse;
-  }
-
-  .home-hero__spark {
-    top: 1.5rem;
-    right: 2rem;
-  }
-
-  .home-hero__loop {
-    right: 0;
-    bottom: -0.6rem;
   }
 
   .reassurance__lead,
@@ -1405,23 +1315,6 @@ const faqPreview = [
     color: var(--color-accent);
   }
 
-  :global(html[data-theme="warm"]) .home-hero__microcopy span {
-    background: rgba(255, 247, 239, 0.94);
-    border-color: rgba(211, 159, 116, 0.2);
-  }
-
-  :global(html[data-theme="warm"]) .home-hero__microcopy span:nth-child(odd) {
-    rotate: -1.4deg;
-  }
-
-  :global(html[data-theme="warm"]) .home-hero__microcopy span:nth-child(even) {
-    rotate: 1.2deg;
-  }
-
-  :global(html[data-theme="warm"]) .home-hero__notice {
-    border-top-color: rgba(211, 159, 116, 0.24);
-  }
-
   :global(html[data-theme="warm"]) .home-hero__visual {
     min-height: 41.5rem;
   }
@@ -1623,21 +1516,11 @@ const faqPreview = [
       width: 100%;
     }
 
-    .home-hero__chips {
-      flex-direction: column;
-      align-items: stretch;
-    }
-
     .symptoms-overview__grid,
     .reasons-grid,
     .promise-cards,
     .services-overview__grid {
       grid-template-columns: 1fr;
-    }
-
-    .home-hero__microcopy {
-      flex-direction: column;
-      align-items: stretch;
     }
 
     .access-preview__list {

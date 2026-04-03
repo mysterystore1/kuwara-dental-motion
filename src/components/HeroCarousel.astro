@@ -31,29 +31,6 @@ const { slides } = Astro.props;
       </figure>
     ))}
   </div>
-
-  <div class="hero-carousel__hud" aria-label="ヒーロー画像の切り替え">
-    <div class="hero-carousel__controls">
-      <button type="button" class="hero-carousel__arrow" data-carousel-prev aria-label="前の画像へ">
-        <span aria-hidden="true">←</span>
-      </button>
-      <button type="button" class="hero-carousel__arrow" data-carousel-next aria-label="次の画像へ">
-        <span aria-hidden="true">→</span>
-      </button>
-    </div>
-
-    <div class="hero-carousel__dots" role="tablist" aria-label="ヒーロー画像の切り替え">
-      {slides.map((slide, index) => (
-        <button
-          type="button"
-          class:list={["hero-carousel__dot", index === 0 && "is-active"]}
-          data-carousel-dot
-          aria-label={`${index + 1}枚目: ${slide.title}`}
-          aria-selected={index === 0 ? "true" : "false"}
-        ></button>
-      ))}
-    </div>
-  </div>
 </div>
 
 <script>
@@ -61,9 +38,6 @@ const { slides } = Astro.props;
 
   function initCarousel(root) {
     const slides = Array.from(root.querySelectorAll("[data-carousel-slide]"));
-    const dots = Array.from(root.querySelectorAll("[data-carousel-dot]"));
-    const prev = root.querySelector("[data-carousel-prev]");
-    const next = root.querySelector("[data-carousel-next]");
     const interval = Number(root.dataset.carouselInterval || 5200);
 
     if (slides.length < 2) return;
@@ -76,12 +50,6 @@ const { slides } = Astro.props;
 
       slides.forEach((slide, slideIndex) => {
         slide.classList.toggle("is-active", slideIndex === index);
-      });
-
-      dots.forEach((dot, dotIndex) => {
-        const active = dotIndex === index;
-        dot.classList.toggle("is-active", active);
-        dot.setAttribute("aria-selected", active ? "true" : "false");
       });
     };
 
@@ -97,23 +65,6 @@ const { slides } = Astro.props;
       stop();
       timer = window.setInterval(() => setIndex(index + 1), interval);
     };
-
-    prev?.addEventListener("click", () => {
-      setIndex(index - 1);
-      start();
-    });
-
-    next?.addEventListener("click", () => {
-      setIndex(index + 1);
-      start();
-    });
-
-    dots.forEach((dot, dotIndex) => {
-      dot.addEventListener("click", () => {
-        setIndex(dotIndex);
-        start();
-      });
-    });
 
     root.addEventListener("mouseenter", stop);
     root.addEventListener("mouseleave", start);
@@ -172,66 +123,8 @@ const { slides } = Astro.props;
     animation: hero-carousel-image-float 14s ease-in-out infinite;
   }
 
-  .hero-carousel__hud {
-    position: absolute;
-    left: 1.25rem;
-    right: 1.25rem;
-    bottom: 0.9rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 0.85rem;
-    padding: 0.55rem 0.75rem;
-    border-radius: 999px;
-    background: rgba(255, 255, 255, 0.82);
-    border: 1px solid rgba(125, 173, 200, 0.14);
-    box-shadow: 0 12px 30px rgba(27, 53, 82, 0.08);
-    backdrop-filter: blur(10px);
-  }
-
-  .hero-carousel__controls,
-  .hero-carousel__dots {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.45rem;
-  }
-
-  .hero-carousel__arrow,
-  .hero-carousel__dot {
-    border: 0;
-    cursor: pointer;
-    transition: transform 0.2s ease, background-color 0.2s ease, opacity 0.2s ease;
-  }
-
-  .hero-carousel__arrow {
-    width: 2.3rem;
-    height: 2.3rem;
-    display: inline-grid;
-    place-items: center;
-    border-radius: 999px;
-    background: rgba(125, 173, 200, 0.12);
-    color: var(--color-primary-dark);
-  }
-
-  .hero-carousel__arrow:hover,
-  .hero-carousel__dot:hover {
-    transform: translateY(-1px);
-  }
-
-  .hero-carousel__dot {
-    width: 0.72rem;
-    height: 0.72rem;
-    border-radius: 999px;
-    background: rgba(125, 173, 200, 0.22);
-  }
-
-  .hero-carousel__dot.is-active {
-    width: 2rem;
-    background: linear-gradient(135deg, var(--color-accent), var(--color-primary-dark));
-  }
-
   :global(html[data-theme="warm"]) .hero-carousel__media {
-    inset: 0 1% 14% 4%;
+    inset: 0 1% 0 4%;
   }
 
   :global(html[data-theme="warm"]) .hero-carousel__slide {
@@ -246,54 +139,27 @@ const { slides } = Astro.props;
     border-radius: 2.4rem;
   }
 
-  :global(html[data-theme="warm"]) .hero-carousel__hud {
-    background: rgba(255, 249, 242, 0.84);
-    border-color: rgba(211, 159, 116, 0.2);
-    box-shadow: 0 14px 32px rgba(111, 92, 62, 0.1);
-  }
-
-  :global(html[data-theme="warm"]) .hero-carousel__arrow {
-    background: rgba(229, 138, 82, 0.15);
-    color: var(--color-accent);
-  }
-
-  :global(html[data-theme="warm"]) .hero-carousel__dot {
-    background: rgba(229, 138, 82, 0.22);
-  }
-
   @media (max-width: 900px) {
     .hero-carousel__media {
-      inset: 2% 2% 18% 8%;
-    }
-
-    .hero-carousel__hud {
-      left: 1rem;
-      right: 1rem;
+      inset: 2% 2% 8% 8%;
     }
   }
 
   @media (max-width: 900px) {
     :global(html[data-theme="warm"]) .hero-carousel__media {
-      inset: 2% 2% 18% 7%;
+      inset: 2% 2% 8% 7%;
     }
   }
 
   @media (max-width: 640px) {
     .hero-carousel__media {
-      inset: 2% 1% 24% 7%;
-    }
-
-    .hero-carousel__hud {
-      left: 0.7rem;
-      right: 0.7rem;
-      bottom: 0.6rem;
-      padding: 0.45rem 0.6rem;
+      inset: 2% 1% 10% 7%;
     }
   }
 
   @media (max-width: 640px) {
     :global(html[data-theme="warm"]) .hero-carousel__media {
-      inset: 2% 1% 24% 6%;
+      inset: 2% 1% 10% 6%;
     }
   }
 
