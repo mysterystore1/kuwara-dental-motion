@@ -97,25 +97,28 @@ const { slides } = Astro.props;
   .hero-carousel__media::before {
     content: "";
     position: absolute;
-    inset: 8% auto 10% -8%;
-    width: 24%;
-    border-radius: 48% 52% 42% 58% / 50% 44% 56% 50%;
-    background: color-mix(in srgb, var(--color-paper) 90%, white 10%);
-    box-shadow: 0 14px 28px rgba(27, 53, 82, 0.04);
+    inset: 6% auto auto -5%;
+    width: 34%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: color-mix(in srgb, var(--color-primary-light) 74%, white 26%);
+    filter: blur(2px);
+    opacity: 0.78;
     z-index: 0;
+    pointer-events: none;
   }
 
   .hero-carousel__media::after {
     content: "";
     position: absolute;
-    inset: auto -2% -6% auto;
-    width: 28%;
+    inset: auto -1% 5% auto;
+    width: 18%;
     aspect-ratio: 1;
     border-radius: 50%;
-    background: color-mix(in srgb, var(--color-paper) 92%, white 8%);
-    filter: blur(2px);
-    opacity: 0.92;
-    z-index: 2;
+    background: color-mix(in srgb, var(--color-accent-light) 74%, white 26%);
+    filter: blur(6px);
+    opacity: 0.66;
+    z-index: 0;
     pointer-events: none;
   }
 
@@ -134,33 +137,6 @@ const { slides } = Astro.props;
     opacity: 1;
     transform: translateX(0) scale(1);
     pointer-events: auto;
-  }
-
-  .hero-carousel__slide::before {
-    content: "";
-    position: absolute;
-    inset: 12% auto 14% -10%;
-    width: 26%;
-    border-radius: 46% 54% 60% 40% / 56% 42% 58% 44%;
-    background: color-mix(in srgb, var(--color-paper) 88%, white 12%);
-    filter: blur(4px);
-    opacity: 0.96;
-    z-index: 2;
-    pointer-events: none;
-  }
-
-  .hero-carousel__slide::after {
-    content: "";
-    position: absolute;
-    inset: auto 6% -3% auto;
-    width: 19%;
-    aspect-ratio: 1;
-    border-radius: 50%;
-    background: color-mix(in srgb, var(--color-surface) 88%, white 12%);
-    filter: blur(8px);
-    opacity: 0.72;
-    z-index: 2;
-    pointer-events: none;
   }
 
   .hero-carousel__image {
@@ -184,11 +160,11 @@ const { slides } = Astro.props;
   }
 
   :global(html[data-theme="warm"]) .hero-carousel__media::before {
-    background: color-mix(in srgb, var(--color-paper) 90%, rgba(255, 232, 214, 1) 10%);
+    background: color-mix(in srgb, var(--color-surface) 72%, rgba(255, 245, 233, 1) 28%);
   }
 
   :global(html[data-theme="warm"]) .hero-carousel__media::after {
-    background: color-mix(in srgb, var(--color-paper) 90%, rgba(247, 241, 232, 1) 10%);
+    background: color-mix(in srgb, var(--color-accent-light) 70%, rgba(255, 240, 226, 1) 30%);
   }
 
   :global(html[data-theme="warm"]) .hero-carousel__slide {
@@ -203,27 +179,14 @@ const { slides } = Astro.props;
     border-radius: 2.4rem;
   }
 
-  :global(html[data-theme="warm"]) .hero-carousel__slide::before {
-    background: color-mix(in srgb, var(--color-paper) 86%, rgba(255, 233, 212, 1) 14%);
-  }
-
-  :global(html[data-theme="warm"]) .hero-carousel__slide::after {
-    background: color-mix(in srgb, var(--color-surface) 86%, rgba(255, 228, 204, 1) 14%);
-  }
-
   @media (max-width: 900px) {
     .hero-carousel__media {
       inset: 2% 2% 8% 8%;
     }
 
     .hero-carousel__media::before {
-      inset: 10% auto 12% -6%;
-      width: 20%;
-    }
-
-    .hero-carousel__slide::before {
-      inset: 14% auto 16% -6%;
-      width: 19%;
+      inset: 8% auto auto -4%;
+      width: 28%;
     }
   }
 
@@ -238,8 +201,7 @@ const { slides } = Astro.props;
       inset: 2% 1% 10% 7%;
     }
 
-    .hero-carousel__media::after,
-    .hero-carousel__slide::after {
+    .hero-carousel__media::after {
       width: 24%;
     }
   }
